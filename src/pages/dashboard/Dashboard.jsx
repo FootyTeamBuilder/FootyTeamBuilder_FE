@@ -52,6 +52,18 @@ const Dashboard = () => {
                     <HoverImage image='ranking.jpg' text='Xếp hạng đội bóng' />
                 </div>
             </div>
+            <div className="story story-4th">
+                <h1 style={{fontSize: '2.5rem'}}>Đánh giá của người dùng</h1>
+                <img src={require('../../assets/reviews.png')} style={{height: '11rem'}} alt="" />
+            </div>
+            <div className="story story-5th">
+                <h1 style={{fontSize: '2rem', marginBottom: '2.5rem'}}>Subscribe để nhận thông báo mới nhất</h1>
+                <div className="row">
+                    <input type="text" placeholder='Nhập email của bạn' />
+                    <Button text='Subscribe' height='3rem' width='7rem' />
+                </div>
+            </div>
+            <Footer />
         </div>
     )
 }

@@ -11,7 +11,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard />} />
         </Routes>
-        <Footer />
+        <Routes>
+          <Route exact path='/' />
+          <Route path="*" element={<Footer />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

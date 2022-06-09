@@ -1,11 +1,11 @@
 .dashboard {
-    /* scroll-snap-type: y;
+    scroll-snap-type: y mandatory;
     overflow-y: auto;
-    height: 90vh; */
+    height: 90vh;
 }
 
 .dashboard .story {
-    /* scroll-snap-align: start; */
+    scroll-snap-align: start;
 }
 
 .dashboard .story-1st {
@@ -78,4 +78,32 @@
     grid-template-columns: auto auto auto;
     row-gap: 3vh;
     column-gap: 2vw;
+}
+
+.dashboard .story-4th {
+    background-color: #FFF3E0;
+    box-sizing: border-box;
+    padding: 4rem 10vw 5rem 10vw;
+}
+.dashboard .story-4th h1 {
+    margin-bottom: 4rem;
+}
+
+.dashboard .story-5th {
+    background-color: #FFFCF7;
+    padding: 3rem 10vw 4rem 10vw;
+    box-sizing: border-box;
+}
+
+.dashboard .story-5th .row {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.dashboard .story-5th input {
+    margin-right: 1rem;
+    border: 1px solid black;
+    width: 17rem;
+    font-size: 1rem;
+    padding: 0.8rem;
 }

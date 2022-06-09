@@ -1,4 +1,5 @@
 .header {
+    height: 10vh;
     z-index: 999;
     position: sticky;
     top: 0;

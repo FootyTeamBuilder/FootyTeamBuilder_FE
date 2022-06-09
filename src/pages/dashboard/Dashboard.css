@@ -1,11 +1,11 @@
 .dashboard {
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y;
     overflow-y: auto;
-    height: 90vh;
+    height: 90vh; */
 }
 
 .dashboard .story {
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
 }
 
 .dashboard .story-1st {

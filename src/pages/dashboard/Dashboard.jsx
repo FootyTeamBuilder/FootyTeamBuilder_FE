@@ -1,6 +1,7 @@
 import Button from '../../components/button/Button';
 import HoverImage from '../../components/homepage/hover-image/HoverImage';
 import './Dashboard.css';
+import Footer from '../../components/footer/Footer';
 
 const Dashboard = () => {
     return (

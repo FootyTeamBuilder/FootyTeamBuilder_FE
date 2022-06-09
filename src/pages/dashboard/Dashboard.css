@@ -1,0 +1,81 @@
+.dashboard {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 90vh;
+}
+
+.dashboard .story {
+    scroll-snap-align: start;
+}
+
+.dashboard .story-1st {
+    display: flex;
+    height: 90vh;
+}
+
+.dashboard .story-1st .left {
+    width: 50%;
+    background-color: #FFFCF7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 1rem;
+    padding: 0 4vw 0 4vw;
+    box-sizing: border-box;
+}
+
+.dashboard .story-1st .right {
+    width: 50%;
+    background-image: url('../../assets/messi.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.dashboard .story-2nd {
+    height: 90vh;
+    background-color: #FFF3E0;
+    display: flex;
+    column-gap: 5vw;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 5vw 0 5vw;
+}
+
+.dashboard .story-2nd .right {
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dashboard .story-2nd .right .two-child-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard .story-2nd .right .two-child-div .child {
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard .story-3rd {
+    height: 120vh;
+    background-color: #FFFCF7;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5vh;
+    box-sizing: border-box;
+}
+
+.dashboard .story-3rd .grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 3vh;
+    column-gap: 2vw;
+}

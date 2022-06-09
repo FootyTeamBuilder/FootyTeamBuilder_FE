@@ -1,0 +1,40 @@
+.header {
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    box-sizing: border-box;
+    background-color: antiquewhite;
+    box-shadow: inset 0px -0.854167px 0px #63A44C;
+}
+
+.header.is-scrolled {
+    background-color: #fffcf7ee;
+    backdrop-filter: blur(3px);
+}
+
+.header .header-child {
+    display: flex;
+    align-items: center;
+}
+
+.header .header-child.right {
+    column-gap: 2.8vw;
+}
+
+.header .web-name {
+    color: #63A44C;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+.header a {
+    color: black;
+}
+.header a:hover {
+    color: #63A44C;
+}

@@ -15,7 +15,7 @@ const Header = () => {
         <div className={isScrolled ? 'header is-scrolled' : 'header'}>
             <div className="header-child">
                 <Link to='/'>
-                    <img src={require('../../assets/goal.png')} style={{width: '3.5rem'}} alt='' />
+                    <img src={require('../../assets/goal.png').default} style={{width: '3.5rem'}} alt='' />
                 </Link>
                 <span className="web-name">FootballTeam</span>
             </div>

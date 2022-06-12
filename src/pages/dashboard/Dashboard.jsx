@@ -2,12 +2,9 @@ import Button from "../../components/button/Button";
 import HoverImage from "../../components/homepage/hover-image/HoverImage";
 import "./Dashboard.css";
 import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
 
 const Dashboard = () => {
   return (
-    <>
-      <Header />
       <div className="dashboard">
         <div className="story story-1st">
           <div className="left">
@@ -111,9 +108,8 @@ const Dashboard = () => {
             <Button text="Subscribe" height="3rem" width="7rem" />
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </>
   );
 };
 

@@ -41,7 +41,7 @@ const Login = () => {
                   {/* <label>EMAIL</label> */}
                   <input
                     type="text"
-                    placeholder="Enter your username"
+                    placeholder="Email"
                     className="input-field"
                     onChange={(e) => setEmail(e.target.value)}
                   />
@@ -50,7 +50,7 @@ const Login = () => {
                   {/* <label>PASSWORD</label> */}
                   <input
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="Password"
                     className="input-field"
                     onChange={(e)=>setPassword(e.target.value)}
                   />
@@ -60,7 +60,7 @@ const Login = () => {
                 </button>
                 <p className="text">
                   Forgotten your password or you login datails?
-                  <Link to="#">Get help</Link> signing in
+                  <Link to="#"> Get help</Link> signing in
                 </p>
               </div>
             </form>

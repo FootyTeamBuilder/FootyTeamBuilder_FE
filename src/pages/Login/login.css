@@ -69,12 +69,14 @@ form {
   margin-top: -9px;
   letter-spacing: -0.5px;
   color: #151111;
+  margin: 0;
 }
 
 .heading h2 {
   font-size: 2.1rem;
   font-weight: 600;
   color: #151111;
+  margin: 0;
 }
 
 .heading h6 {
@@ -175,8 +177,7 @@ label {
   width: 55%;
   left: 45%;
   top: 0;
-  background-color: #d1d2e0
-  ;
+  background-color: #d1d2e0;
   border-radius: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -241,6 +242,7 @@ label {
   line-height: 2.2rem;
   font-weight: 600;
   font-size: 1.6rem;
+  margin: 0;
 }
 
 .bullets {

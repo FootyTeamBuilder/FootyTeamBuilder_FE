@@ -2,8 +2,12 @@ import Button from "../../components/common/button/Button";
 import HoverImage from "../../components/homepage/hover-image/HoverImage";
 import "./Dashboard.css";
 import Footer from "../../components/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+
+  const navigate = useNavigate();
+
   return (
       <div className="dashboard">
         <div className="story story-1st">
@@ -20,6 +24,7 @@ const Dashboard = () => {
               height="3rem"
               width="10rem"
               fontSize="1rem"
+              action={(e) => navigate('/register')}
             />
           </div>
           <div className="right">
@@ -67,6 +72,7 @@ const Dashboard = () => {
               height="3rem"
               width="10rem"
               fontSize="1rem"
+              action={(e) => navigate('/register')}
             />
           </div>
         </div>

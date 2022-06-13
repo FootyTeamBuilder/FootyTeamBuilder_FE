@@ -41,16 +41,16 @@ const Register = () => {
               </div>
               <div className="actual-form">
                 <div className="input-wrap">
-                  <input type="text" className="input-field" onChange={(e)=>setName(e.target.value)}/>
-                  <label>Name</label>
+                  <input type="text" className="input-field" onChange={(e)=>setName(e.target.value)} placeholder='Name' />
+                  {/* <label>Name</label>  */}
                 </div>
                 <div className="input-wrap">
-                  <input type="text" className="input-field" onChange={(e)=>setEmail(e.target.value)}/>
-                  <label>Email</label>
+                  <input type="text" className="input-field" onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
+                  {/* <label>Email</label> */}
                 </div>
                 <div className="input-wrap">
-                  <input type="password" className="input-field" onChange={(e)=>setPassword(e.target.value)}/>
-                  <label>Password</label>
+                  <input type="password" className="input-field" onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
+                  {/* <label>Password</label> */}
                 </div>
                 <button className="sign-btn" type="submit">
                   Sign Up

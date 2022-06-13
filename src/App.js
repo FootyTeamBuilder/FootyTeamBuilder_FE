@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -10,7 +10,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Routes>
+          <Route exact path='/login' />
+          <Route exact path="/register" />
+          <Route path="*" element={<Header />} />
+        </Routes>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
@@ -18,6 +22,8 @@ function App() {
         </Routes>
         <Routes>
           <Route exact path='/' />
+          <Route exact path='/login' />
+          <Route exact path='/register' />
           <Route path='*' element={<Footer />} />
         </Routes>
       </BrowserRouter>

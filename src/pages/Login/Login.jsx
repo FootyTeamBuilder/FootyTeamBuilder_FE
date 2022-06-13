@@ -38,19 +38,19 @@ const Login = () => {
               </div>
               <div className="actual-form">
                 <div className="input-wrap">
-                  <label>EMAIL</label>
+                  {/* <label>EMAIL</label> */}
                   <input
                     type="text"
-                    // placeholder="Enter your username"
+                    placeholder="Enter your username"
                     className="input-field"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="input-wrap">
-                  <label>PASSWORD</label>
+                  {/* <label>PASSWORD</label> */}
                   <input
                     type="password"
-                    // placeholder="Enter your password"
+                    placeholder="Enter your password"
                     className="input-field"
                     onChange={(e)=>setPassword(e.target.value)}
                   />

@@ -5,15 +5,20 @@ import Register from "./pages/Register/Register";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import LoginHeader from "./components/header/LoginHeader";
+import { useSelector } from "react-redux";
 
 function App() {
+
+  const {login} = useSelector((state) => state.auth);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route exact path='/login' />
           <Route exact path="/register" />
-          <Route path="*" element={<Header />} />
+          <Route path="*" element={login.currentUser? <LoginHeader /> : <Header />} />
         </Routes>
         <Routes>
           <Route path="/" element={<Dashboard />} />

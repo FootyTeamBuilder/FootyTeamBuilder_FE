@@ -7,6 +7,8 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LoginHeader from "./components/header/LoginHeader";
 import { useSelector } from "react-redux";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -32,6 +34,7 @@ function App() {
           <Route path='*' element={<Footer />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer autoClose={1500} />
     </div>
   );
 }

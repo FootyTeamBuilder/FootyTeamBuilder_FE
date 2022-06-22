@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="upper-left">
                     <div className="logo-div">
                         <Link to='/'>
-                            <img src={require('../../assets/goal.png').default} style={{width: '3.5rem'}} alt='' />
+                            <img src={require('../../assets/goal.png')} style={{width: '3.5rem'}} alt='' />
                         </Link>
                         <span className="web-name">FootballTeam</span>
                     </div>

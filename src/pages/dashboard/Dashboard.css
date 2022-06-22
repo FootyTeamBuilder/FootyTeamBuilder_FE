@@ -4,6 +4,10 @@
     height: 90vh;
 }
 
+.dashboard::-webkit-scrollbar {
+    display: none;
+}
+
 .dashboard .story {
     scroll-snap-align: start;
 }

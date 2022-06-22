@@ -7,10 +7,12 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import GroupIcon from '@mui/icons-material/Group';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../redux/apiRequest';
 
 const LoginHeader = () => {
 
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpenProfileDropdown, setIsOpenProfileDropdown] = useState(false);
     const [isOpenNoti, setIsOpenNoti] = useState(false);
@@ -46,14 +48,14 @@ const LoginHeader = () => {
 
                         {/* se sua thanh map */}
                         <div className="noti-item">
-                            <img src={require('../../assets/pep.jpg').default} alt="" />
+                            <img src={require('../../assets/pep.jpg')} alt="" />
                             <div>
                                 <p>Content</p>
                                 <span>1 Ngày trước</span>
                             </div>
                         </div>
                         <div className="noti-item">
-                            <img src={require('../../assets/pep.jpg').default} alt="" />
+                            <img src={require('../../assets/pep.jpg')} alt="" />
                             <div>
                                 <p>Content</p>
                                 <span>1 Ngày trước</span>
@@ -64,7 +66,7 @@ const LoginHeader = () => {
                 </div>
                 <div style={{position: 'relative'}}>
                     <img 
-                        src={require('../../assets/blank-avatar.jpg').default} 
+                        src={require('../../assets/blank-avatar.jpg')} 
                         alt='' 
                         className='avatar'
                         onClick={(e) => {
@@ -79,7 +81,7 @@ const LoginHeader = () => {
                         <Link to='#'>
                             <GroupIcon /> Hồ sơ đội bóng
                         </Link>
-                        <Link to='#'>
+                        <Link to='#' onClick={(e) => logOut(dispatch)}>
                             <LogoutIcon /> Đăng xuất
                         </Link>
                     </div>

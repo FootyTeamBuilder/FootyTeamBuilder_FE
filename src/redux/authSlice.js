@@ -4,14 +4,14 @@ const authSlice = createSlice({
     name: "auth",
     initialState:{
         login:{
-            currentUser:null,
+            currentUser: null,
             isFetching: false,
-            error:false
+            error: false
         },
         register:{
             isFetching: false,
-            error:false,
-            success:false
+            error: false,
+            success: false
         },
     },
     reducers:{

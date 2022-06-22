@@ -10,7 +10,7 @@ const HoverImage = ({ image, text }) => {
             onMouseEnter={(e) => setIsHovered(true)} 
             onMouseLeave={(e) => setIsHovered(false)}
         >
-            <img src={require(`../../../assets/${image}`).default} alt="" />
+            <img src={require(`../../../assets/${image}`)} alt="" />
             {
                 isHoverd &&
                 <div className="hover-div"> {text} </div>

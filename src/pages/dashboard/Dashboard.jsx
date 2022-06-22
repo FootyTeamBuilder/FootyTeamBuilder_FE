@@ -33,7 +33,7 @@ const Dashboard = () => {
         </div>
         <div className="story story-2nd">
           <img
-            src={require("../../assets/thay-park.jpg").default}
+            src={require("../../assets/thay-park.jpg")}
             alt=""
             style={{ width: "671px", height: "450px" }}
           />
@@ -44,7 +44,7 @@ const Dashboard = () => {
             <div className="two-child-div">
               <div className="child">
                 <img
-                  src={require("../../assets/tactics.png").default}
+                  src={require("../../assets/tactics.png")}
                   style={{ width: "5rem" }}
                   alt=""
                 />
@@ -56,7 +56,7 @@ const Dashboard = () => {
               </div>
               <div className="child">
                 <img
-                  src={require("../../assets/handshake.png").default}
+                  src={require("../../assets/handshake.png")}
                   style={{ width: "5rem" }}
                   alt=""
                 />
@@ -100,7 +100,7 @@ const Dashboard = () => {
         <div className="story story-4th">
           <h1 style={{ fontSize: "2.5rem" }}>Đánh giá của người dùng</h1>
           <img
-            src={require("../../assets/reviews.png").default}
+            src={require("../../assets/reviews.png")}
             style={{ height: "11rem" }}
             alt=""
           />

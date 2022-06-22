@@ -100,14 +100,15 @@
     right: 0;
     height: 0;
     width: 25rem;
-    overflow: auto;
     transition: 0.4s;
+    overflow-y: auto;
 }
 .header .noti.is-opened {
+    overflow-y: auto;
     background-color: #fff3e0;
     border: 1px solid #63A44C;
     top: 7vh;
-    height: fit-content;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     padding-top: 1.8rem;

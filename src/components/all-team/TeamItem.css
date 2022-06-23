@@ -1,0 +1,31 @@
+.team-item {
+    width: 15rem;
+    height: 23rem;
+    background-color: white;
+    border: 0.5px solid #63A44C;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0.5rem 2rem 0.5rem;
+}
+.team-item:hover {
+    box-shadow: 1px 3px 9px #63a44c92;
+}
+
+.team-item hr {
+    width: 100%;
+    border: 0.2px solid rgb(236, 236, 236);
+}
+
+.team-item .team-avatar {
+    width: 6rem;
+    margin-bottom: 15px;
+}
+
+.team-item .name {
+    color: #63A44C;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}

@@ -1,5 +1,5 @@
 import './Header.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Button from '../common/button/Button'
 import { useState } from 'react'
 import goalImg from '../../assets/goal.png';
@@ -22,11 +22,11 @@ const Header = () => {
                 <span className="web-name">FootballTeam</span>
             </div>
             <div className="header-child right">
-                <Link to='/'>Trang chủ</Link>
-                <Link to='#'>Về chúng tôi</Link>
-                <Link to='#'>Đội bóng</Link>
-                <Link to='#'>Giải đấu</Link>
-                <Link to='#'>Liên hệ</Link>
+                <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Trang chủ</NavLink>
+                <NavLink to='/about' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Về chúng tôi</NavLink>
+                <NavLink to='/all-team' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Đội bóng</NavLink>
+                <NavLink to='/league' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Giải đấu</NavLink>
+                <NavLink to='/contact' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Liên hệ</NavLink>
                 <Button text='Đăng nhập' width='7rem' height='2.5rem' fontSize='1rem' action={(e) => navigate('/login')} />
             </div>
         </div>

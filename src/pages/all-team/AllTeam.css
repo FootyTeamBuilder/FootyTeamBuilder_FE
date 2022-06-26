@@ -52,5 +52,6 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
     row-gap: 7vh;
-    justify-content: space-around;
+    column-gap: 4vw;
+    justify-content: start;
 }

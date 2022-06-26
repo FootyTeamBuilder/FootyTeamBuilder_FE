@@ -1,9 +1,10 @@
 import './TeamItem.css';
 
-const TeamItem = ({name, level}) => {
+const TeamItem = ({avatar, name, level}) => {
+
     return (
         <div className="team-item">
-            <img src={require('../../assets/pep.jpg')} className='team-avatar' alt="" />
+            <img src={require(`../../assets/${avatar}`)} className='team-avatar' alt="" />
             <div className='name'>{name}</div>
             <hr />
             <span className='level'>Trình độ: {level} </span>

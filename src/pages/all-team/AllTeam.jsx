@@ -5,15 +5,37 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TeamItem from '../../components/all-team/TeamItem';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+import Spinner from '../../components/loading/Spinner';
+import { MessageOutlined } from '@mui/icons-material';
 
 const AllTeam = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [teamList, setTeamList] = useState([]);
+
+    const getTeamList = async (params) => {
+        const response = await axios.get(`http://localhost:8080/team/list/${params}`);
+        setTeamList(response.data.data);
+        setIsLoading(false);
+    }
+
+    useEffect(() => {
+        getTeamList('');
+    },[]);
+
+    console.log(teamList);
+    if(isLoading) return <Spinner />;
+
     return (
         <div className="all-team">
             <div className="search-div">
                 <div className='input-container'>
                     <input 
                         type='text'
-                        placeholder='Nhập thông tin đội bóng'
+                        placeholder='Tìm theo tên đội bóng'
+                        onChange={(e) => getTeamList(e.target.value)}
                     ></input>
                     <SearchIcon />
                 </div>
@@ -49,14 +71,11 @@ const AllTeam = () => {
                 </div>
             </div>
             <div className="teams-div">
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
-                <TeamItem name='FC phui' level='Vui' />
+                {
+                    teamList.map((t) => {
+                        return <TeamItem name={t.name} level={t.level} avatar='blank-avatar.jpg' />
+                    })
+                }
             </div>
         </div>
     )

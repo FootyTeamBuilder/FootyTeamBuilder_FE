@@ -4,29 +4,23 @@ export const userSlice = createSlice({
     name : 'user',
     initialState : {
        userInfo: {
-        name: '',
-        dateOfBirth:'',
-        avatar: '',
-        password: '',
-        achivement: 0,
-        phonenumber: '',
-        email: '',
+        currentInfo : null, 
+        pending: false,
+        error: false,
        },
-       pending: false,
-       error: false,
     }, 
     reducers : {
        updateStart: (state) => {
-        state.pending = true;
+        state.userInfo.pending = true;
        },
        updateSuccess: (state,action) => {
-        state.pending = false;
-        state.error = false;
-        state.userInfo = action.payload;
+        state.userInfo.pending = false;
+        state.userInfo.error = false;
+        state.userInfo.currentInfo = action.payload;
        },
        updateFailed: (state) =>{
-        state.pending = false;
-        state.error = true;
+        state.userInfo.pending = false;
+        state.userInfo.error = true;
        },
     },
 });

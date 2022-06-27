@@ -9,13 +9,17 @@ const UpdateInfor = () => {
   const user = useSelector((state)=> state.auth.login?.currentUser);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [achivements,setAchievements] = useState();
   const dispatch = useDispatch();
 
   const handleUpdate =(e) => {
     e.preventDefault();
     const userInfo = {
       name : name,
-      email : email
+      email : email,
+      achivements : achivements,
+      phonenumber : phonenumber,
     };
     updateInformation(userInfo, dispatch, user?.token);
   };
@@ -66,7 +70,7 @@ const UpdateInfor = () => {
                   className="formInput"
                   type="text"
                   placeholder="Enter your achivements"
-                  // onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setAchievements(e.target.value)}
                 />
               </div>
               <div className="formItem">
@@ -75,7 +79,7 @@ const UpdateInfor = () => {
                   className="formInput"
                   type="text"
                   placeholder="Enter your phone number"
-                  // onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setPhonenumber(e.target.value)}
                 />
               </div>
               <div className="formItem">

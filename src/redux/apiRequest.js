@@ -50,7 +50,8 @@ export const updateInformation = async (userInfo, dispatch, token) => {
     const res = await axios.put("/user/edit-information", userInfo,{
       headers: {  Authorization: `Bearer ${token}`},
     });
-    dispatch(updateSuccess(res.data));
+    console.log(res);
+    dispatch(updateSuccess(res.config.data));
   } catch (error) {
     dispatch(updateFailed());
   }

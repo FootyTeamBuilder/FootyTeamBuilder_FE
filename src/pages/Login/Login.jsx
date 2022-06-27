@@ -2,13 +2,15 @@ import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../../redux/apiRequest";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Spinner from "../../components/loading/Spinner";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const authState = useSelector((state) => state.auth);
 
   const handleLogin = (e) => {
     
@@ -19,6 +21,7 @@ const Login = () => {
     };
     login(newUser, dispatch, navigate);
   }
+
   return (
     <div className="login-container">
       <div className="box">
@@ -92,6 +95,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      { authState.login.isFetching && <Spinner /> }
     </div>
   );
 };

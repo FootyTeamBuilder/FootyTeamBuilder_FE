@@ -9,6 +9,7 @@ import LoginHeader from "./components/header/LoginHeader";
 import { useSelector } from "react-redux";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AllTeam from "./pages/all-team/AllTeam";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/all-team" element={<AllTeam />} />
         </Routes>
         <Routes>
           <Route exact path='/' />

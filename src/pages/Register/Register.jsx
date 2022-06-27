@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../redux/apiRequest";
 import "./register.css";
+import Spinner from "../../components/loading/Spinner";
 
 const Register = () => {
   const [email,setEmail] = useState("");
@@ -11,6 +12,7 @@ const Register = () => {
   const [password,setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const authState = useSelector((state) => state.auth);
 
   const handleRegister= (e)=>{
     e.preventDefault();
@@ -90,6 +92,7 @@ const Register = () => {
           </div>
         </div>
       </div>
+      { authState.register.isFetching && <Spinner /> }
     </div>
   );
 };

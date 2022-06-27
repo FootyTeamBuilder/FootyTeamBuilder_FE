@@ -13,7 +13,7 @@
 }
 
 .header.is-scrolled {
-    background-color: #fffcf7ee;
+    background-color: #fffcf7d6;
     backdrop-filter: blur(3px);
 }
 
@@ -41,6 +41,12 @@
 }
 .header a:hover {
     color: #63A44C;
+}
+.header a.active {
+    color: #63A44C;
+}
+.header a.inactive {
+    color: black;
 }
 
 .header .avatar {

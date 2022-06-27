@@ -3,17 +3,17 @@ import {
   loginFailed,
   loginStart,
   loginSuccess,
-
   registerFailed,
   registerStart,
   registerSuccess,
 } from "./authSlice";
-
+import { updateStart, updateSuccess, updateFailed } from "./userSlice";
 export const login = async (user, dispatch, navigate) => {
   dispatch(loginStart());
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
+
     navigate("/");
   } catch (err) {
     dispatch(loginFailed());
@@ -43,3 +43,15 @@ export const register = async (user, dispatch, navigate) => {
 //     dispatch(logOutFailed());
 //   }
 // };
+
+export const updateInformation = async (userInfo, dispatch, token) => {
+  dispatch(updateStart());
+  try {
+    const res = await axios.put("/user/edit-information",{
+      headers: {  token: `Bearer ${token}`},
+    },userInfo);
+    dispatch(updateSuccess(res.data));
+  } catch (error) {
+    dispatch(updateFailed());
+  }
+}; 

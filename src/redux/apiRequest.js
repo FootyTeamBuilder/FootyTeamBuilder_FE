@@ -47,9 +47,9 @@ export const register = async (user, dispatch, navigate) => {
 export const updateInformation = async (userInfo, dispatch, token) => {
   dispatch(updateStart());
   try {
-    const res = await axios.put("/user/edit-information",{
-      headers: {  token: `Bearer ${token}`},
-    },userInfo);
+    const res = await axios.put("/user/edit-information", userInfo,{
+      headers: {  Authorization: `Bearer ${token}`},
+    });
     dispatch(updateSuccess(res.data));
   } catch (error) {
     dispatch(updateFailed());

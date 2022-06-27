@@ -17,7 +17,7 @@ const UpdateInfor = () => {
       name : name,
       email : email
     };
-  updateInformation(userInfo, dispatch,user?.token);
+    updateInformation(userInfo, dispatch, user?.token);
   };
  
   return (
@@ -57,7 +57,7 @@ const UpdateInfor = () => {
                   className="formInput"
                   type="text"
                   placeholder="Enter your dateOfBirth"
-                  onChange={(e) => setEmail(e.target.value)}
+                  // onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="formItem">
@@ -66,7 +66,7 @@ const UpdateInfor = () => {
                   className="formInput"
                   type="text"
                   placeholder="Enter your achivements"
-                  onChange={(e) => setEmail(e.target.value)}
+                  // onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="formItem">
@@ -75,7 +75,7 @@ const UpdateInfor = () => {
                   className="formInput"
                   type="text"
                   placeholder="Enter your phone number"
-                  onChange={(e) => setEmail(e.target.value)}
+                  // onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="formItem">

@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.box {
+.login-container .box {
   position: relative;
   width: 100%;
   max-width: 1020px;
@@ -19,7 +19,7 @@
   box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
 }
 
-.inner-box {
+.login-container .inner-box {
   position: absolute;
   width: calc(100% - 4.1rem);
   height: calc(100% - 4.1rem);
@@ -28,7 +28,7 @@
   transform: translate(-50%, -50%);
 }
 
-.forms-wrap {
+.login-container .forms-wrap {
   position: absolute;
   height: 100%;
   width: 45%;
@@ -40,7 +40,7 @@
   transition: 0.8s ease-in-out;
 }
 
-.sign-in-form {
+.login-container .sign-in-form {
   max-width: 260px;
   width: 100%;
   margin: 0 auto;
@@ -53,18 +53,18 @@
   transition: opacity 0.02s 0.4s;
 }
 
-.logo {
+.login-container .logo {
   display: flex;
   align-items: center;
 }
 
-.logo img {
+.login-container .logo img {
   width: 27px;
   margin-right: 0.3rem;
   margin-bottom: 9px;
 }
 
-.logo h4 {
+.login-container .logo h4 {
   font-size: 1.1rem;
   margin-top: -9px;
   letter-spacing: -0.5px;
@@ -72,21 +72,21 @@
   margin: 0;
 }
 
-.heading h2 {
+.login-container .heading h2 {
   font-size: 2.1rem;
   font-weight: 600;
   color: #151111;
   margin: 0;
 }
 
-.heading h6 {
+.login-container .heading h6 {
   color: #bababa;
   font-weight: 400;
   font-size: 0.75rem;
   display: inline;
 }
 
-.toggle {
+.login-container .toggle {
   color: #151111;
   text-decoration: none;
   font-size: 0.75rem;
@@ -94,17 +94,17 @@
   transition: 0.3s;
 }
 
-.toggle:hover {
+.login-container .toggle:hover {
   color: #8371fd;
 }
 
-.input-wrap {
+.login-container .input-wrap {
   position: relative;
   height: 37px;
   margin-bottom: 2rem;
 }
 
-.input-field {
+.login-container .input-field {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -118,7 +118,7 @@
   transition: 0.4s;
 }
 
-.label-login {
+.login-container .label-login {
   position: absolute;
   left: 0;
   top: 50%;
@@ -129,16 +129,16 @@
   transition: 0.4s;
 }
 
-.input-field.active {
+.login-container .input-field.active {
   border-bottom-color: #151111;
 }
 
-  .input-field.active + label {
+.login-container  .input-field.active + label {
     font-size: 0.75rem;
     top: -2px;
   }
 
-.sign-btn {
+  .login-container .sign-btn {
   display: inline-block;
   width: 100%;
   height: 43px;
@@ -152,26 +152,26 @@
   transition: 0.3s;
 }
 
-.sign-btn:hover {
+.login-container .sign-btn:hover {
   background-color: #8371fd;
 }
 
-.text {
+.login-container .text {
   color: #bbb;
   font-size: 0.7rem;
 }
 
-.text Link {
+.login-container .text Link {
   color: #bbb;
   transition: 0.3s;
 }
 
-.text Link :hover {
+.login-container .text Link :hover {
   color: #8371fd;
 }
 
 
-.carousel {
+.login-container .carousel {
   position: absolute;
   height: 100%;
   width: 55%;
@@ -186,13 +186,13 @@
   transition: 0.8s ease-in-out;
 }
 
-.images-wrapper {
+.login-container .images-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
 
-.image {
+.login-container .image {
   width: 100%;
   grid-column: 1/2;
   grid-row: 1/2;
@@ -200,37 +200,37 @@
   transition: opacity 0.3s, transform 0.5s;
 }
 
-.img-1 {
+.login-container .img-1 {
   transform: translate(0, -50px);
 }
 
-.img-2 {
+.login-container .img-2 {
   transform: scale(0.4, 0.5);
 }
 
-.img-3 {
+.login-container .img-3 {
   transform: scale(0.3) rotate(-20deg);
 }
 
-.image.show {
+.login-container .image.show {
   opacity: 1;
   transform: none;
 }
 
-.text-slider {
+.login-container .text-slider {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.text-wrap {
+.login-container .text-wrap {
   max-height: 2.2rem;
   overflow: hidden;
   margin-bottom: 2.5rem;
 }
 
-.text-group {
+.login-container .text-group {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -238,20 +238,20 @@
   transition: 0.5s;
 }
 
-.text-group h2 {
+.login-container .text-group h2 {
   line-height: 2.2rem;
   font-weight: 600;
   font-size: 1.6rem;
   margin: 0;
 }
 
-.bullets {
+.login-container .bullets {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.bullets span {
+.login-container .bullets span {
   display: block;
   width: 0.5rem;
   height: 0.5rem;
@@ -262,7 +262,7 @@
   transition: 0.3s;
 }
 
-.bullets span.active {
+.login-container .bullets span.active {
   width: 1.1rem;
   background-color: #ffffff;
   border-radius: 1rem;

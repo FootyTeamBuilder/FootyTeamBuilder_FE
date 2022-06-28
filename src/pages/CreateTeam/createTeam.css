@@ -88,12 +88,12 @@
     margin-left: 20px;
   }
    */
-   *{
+  /* *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  } */
   .updateWrapper {
       color: #fff;
       display: flex;
@@ -104,7 +104,7 @@
       padding: 10px;  
    
     }
-  .updateContainer{
+  .updateWrapper .updateContainer{
     max-width: 800px;
     width: 100%;
     padding: 25px 30px;
@@ -112,7 +112,7 @@
     background: linear-gradient(to left bottom, #6b6bd1, #6c77d7, #6f83dc, #748fe0, #7b9ae3, #73a7ec, #6db3f3, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);  
   
   }
-  .updateContainer .heading {
+  .updateWrapper .updateContainer .heading {
     font-size: 25px;
     font-weight: 500;
     position: relative;
@@ -120,7 +120,7 @@
     padding: 0 0 20px 0;
     
   }
-  .updateContainer .heading::before{
+  .updateWrapper .updateContainer .heading::before{
     content: '';
     position: absolute;
     height : 3px;
@@ -129,15 +129,15 @@
     width: 100%;
     background: pink;
   }
-  .updateContainer form .card {
+  .updateWrapper .updateContainer form .card {
     display: flex;
     justify-content: space-around;
     gap: 20px;
   }
-  .updateContainer form .card .formAvatar {
+  .updateWrapper .updateContainer form .card .formAvatar {
     margin-top: 25px;
   }
-  .updateContainer form .card .card-details{
+  .updateWrapper .updateContainer form .card .card-details{
     margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
@@ -145,16 +145,16 @@
   }
   
   
-  form .card .card-details .formItem  {
+  .updateWrapper form .card .card-details .formItem  {
     width: calc(100% / 2 - 20px);
     margin-bottom: 15px;
   }
-  .card-details .formItem .labelInfor {
+  .updateWrapper .card-details .formItem .labelInfor {
     display: block;
     font-weight: 500;
     margin-bottom: 5px;
   } 
-  .card-details .formItem .formInput {
+  .updateWrapper .card-details .formItem .formInput {
     height: 45px;
     width: 100%;
     outline: none;
@@ -165,21 +165,21 @@
     border-bottom-width: 2px;
     transition: all 0.3s ease;
   }
-  .card-details .formItem .formInput:focus,
-  .card-details .formItem .formInput:valid{
+  .updateWrapper .card-details .formItem .formInput:focus,
+  .updateWrapper .card-details .formItem .formInput:valid{
     border-color: pink;
   }
   
-  .avatar{
+  .updateWrapper .avatar{
     width: 100%;
     margin-top: 5px;
   }
-  form .buttonUpdate{
+  .updateWrapper form .buttonUpdate{
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  form .buttonUpdate button{
+  .updateWrapper form .buttonUpdate button{
     padding: 10px 0;
     margin-top: 10px;
     height: 100%;

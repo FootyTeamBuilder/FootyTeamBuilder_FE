@@ -32,7 +32,6 @@ const LoginHeader = () => {
             </div>
             <div className="header-child right">
                 <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Trang chủ</NavLink>
-                <NavLink to='/about' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Về chúng tôi</NavLink>
                 <NavLink to='/all-team' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Đội bóng</NavLink>
                 <NavLink to='/league' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Giải đấu</NavLink>
                 <NavLink to='/contact' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Liên hệ</NavLink>

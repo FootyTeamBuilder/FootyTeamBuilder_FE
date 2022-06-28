@@ -8,6 +8,7 @@ import {
   registerSuccess,
 } from "./authSlice";
 import { updateStart, updateSuccess, updateFailed } from "./userSlice";
+import { createStart, createSuccess, createFailed } from "./teamSlice";
 export const login = async (user, dispatch, navigate) => {
   dispatch(loginStart());
   try {
@@ -54,5 +55,18 @@ export const updateInformation = async (userInfo, dispatch, token) => {
     dispatch(updateSuccess(res.config.data));
   } catch (error) {
     dispatch(updateFailed());
+  }
+}; 
+
+export const createNewTeam = async (newTeam, dispatch, token) => {
+  dispatch(createStart());
+  try {
+    const res = await axios.put("/team/create", newTeam,{
+      headers: {  Authorization: `Bearer ${token}`},
+    });
+    console.log(res);
+    dispatch(createSuccess(res.config.data));
+  } catch (error) {
+    dispatch(createFailed());
   }
 }; 

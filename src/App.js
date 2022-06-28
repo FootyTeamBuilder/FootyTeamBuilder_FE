@@ -6,7 +6,7 @@ import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import UpdateInfor from "./pages/UpdateInfor/UpdateInfor";
-// import CreateTeam from "./pages/CreateTeam/CreateTeam"
+import CreateTeam from "./pages/CreateTeam/CreateTeam"
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/edit-information" element={<UpdateInfor/>} />
-          {/* <Route path="/create" element={<CreateTeam />} /> */}
+          <Route path="/create" element={<CreateTeam />} />
         </Routes>
         <Routes>
           <Route exact path='/' />

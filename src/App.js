@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AllTeam from "./pages/all-team/AllTeam";
+import UpdateInfor from "./pages/UpdateInfor/UpdateInfor";
+import CreateTeam from "./pages/CreateTeam/CreateTeam"
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/all-team" element={<AllTeam />} />
+          <Route path="/edit-information" element={<UpdateInfor/>} />
+          <Route path="/create" element={<CreateTeam />} />
         </Routes>
         <Routes>
           <Route exact path='/' />

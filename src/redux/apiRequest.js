@@ -11,13 +11,15 @@ import {
   logOutSuccess,
   logOutFailed
 } from "./authSlice";
-
+import { updateStart, updateSuccess, updateFailed } from "./userSlice";
+import { createStart, createSuccess, createFailed } from "./teamSlice";
 export const login = async (user, dispatch, navigate) => {
   dispatch(loginStart());
   try {
     const res = await axios.post("/auth/login", user);
     dispatch(loginSuccess(res.data));
     toast.success('Đăng nhập thành công');
+
     navigate("/");
   } catch (err) {
     dispatch(loginFailed());
@@ -50,3 +52,29 @@ export const logOut = async (dispatch, id, navigate, accessToken, axiosJWT) => {
     toast.error('Đăng xuất thất bại');
   }
 };
+
+export const updateInformation = async (userInfo, dispatch, token) => {
+  dispatch(updateStart());
+  try {
+    const res = await axios.put("/user/edit-information", userInfo,{
+      headers: {  Authorization: `Bearer ${token}`},
+    });
+    console.log(res);
+    dispatch(updateSuccess(res.config.data));
+  } catch (error) {
+    dispatch(updateFailed());
+  }
+}; 
+
+export const createNewTeam = async (newTeam, dispatch, token) => {
+  dispatch(createStart());
+  try {
+    const res = await axios.put("/team/create", newTeam,{
+      headers: {  Authorization: `Bearer ${token}`},
+    });
+    console.log(res);
+    dispatch(createSuccess(res.config.data));
+  } catch (error) {
+    dispatch(createFailed());
+  }
+}; 

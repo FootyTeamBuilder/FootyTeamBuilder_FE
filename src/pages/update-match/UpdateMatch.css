@@ -1,0 +1,67 @@
+.update-match {
+    height: 90vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('../../assets/c1.jpg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 4vw;
+}
+
+.update-match input {
+    border: 2px solid #63A44C;
+    height: 5rem;
+    width: 8rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #63A44C;
+    font-weight: 600;
+}
+
+.update-match img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+}
+
+.update-match .confirm {
+    cursor: pointer;
+    position: absolute;
+    bottom: 7rem;
+    width: 15rem;
+    height: 3.5rem;
+    font-size: 1.2rem;
+    background-color: #63A44C;
+    color: white;
+    border: none;
+    box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.2);
+}
+.update-match .confirm:hover {
+    box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+.update-match .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.update-match .info .time {
+    font-size: 2.5rem;
+}
+
+.update-match .info .location {
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    top: 2rem;
+}
+
+.update-match .status {
+    position: absolute;
+    top: 10rem;
+    color: white;
+    font-size: 1.4rem;
+}
+

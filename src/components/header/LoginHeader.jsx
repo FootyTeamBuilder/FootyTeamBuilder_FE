@@ -9,6 +9,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/apiRequest';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 
 const LoginHeader = () => {
 
@@ -80,6 +81,9 @@ const LoginHeader = () => {
                         </Link>
                         <Link to='#'>
                             <GroupIcon /> Hồ sơ đội bóng
+                        </Link>
+                        <Link to='/update-match'>
+                            <SportsSoccerIcon /> Trận đấu của tôi
                         </Link>
                         <Link to='#' onClick={(e) => logOut(dispatch)}>
                             <LogoutIcon /> Đăng xuất

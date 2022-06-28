@@ -1,0 +1,195 @@
+/* .update {
+    flex: 6;
+  }
+  
+  .updateWrapper {
+    padding: 20px;
+  }
+  
+  .delete {
+    border: none;
+    padding: 5px;
+    font-size: 12px;
+    background-color: rgb(243, 129, 152);
+    color: white;
+    font-weight: 500;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .updateTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  
+  .updateContainer {
+    display: flex;
+    margin-top: 20px;
+    border-top: 1px solid lightgray;
+    padding-top: 10px;
+  }
+  
+  form {
+    flex: 1;
+  }
+  
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .formInput {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  
+  .profilePic{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .change{
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 13px;
+    color: teal;
+  }
+  
+  .updateButton {
+    margin-top: 10px;
+    border: none;
+    padding: 5px  10px;
+    background-color: rgb(97, 161, 161);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .updateButton:disabled{
+    cursor: not-allowed;
+    background-color: rgb(136, 168, 168);
+  }
+  
+  .error{
+    color: red;
+    font-size: 14px;
+    margin-left: 20px;
+  }
+  
+  .success{
+    color: green;
+    font-size: 14px;
+    margin-left: 20px;
+  }
+   */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.updateWrapper {
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    padding: 10px;  
+ 
+  }
+.updateContainer{
+  max-width: 800px;
+  width: 100%;
+  padding: 25px 30px;
+  border-radius: 25px;
+  background: linear-gradient(to left bottom, #6b6bd1, #6c77d7, #6f83dc, #748fe0, #7b9ae3, #73a7ec, #6db3f3, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);  
+
+}
+.updateContainer .heading {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  text-align: center;
+  padding: 0 0 20px 0;
+  
+}
+.updateContainer .heading::before{
+  content: '';
+  position: absolute;
+  height : 3px;
+  left : 0;
+  bottom: 0;
+  width: 100%;
+  background: pink;
+}
+.updateContainer form .card {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+.updateContainer form .card .formAvatar {
+  margin-top: 25px;
+}
+.updateContainer form .card .card-details{
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+form .card .card-details .formItem  {
+  width: calc(100% / 2 - 20px);
+  margin-bottom: 15px;
+}
+.card-details .formItem .labelInfor {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+} 
+.card-details .formItem .formInput {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.card-details .formItem .formInput:focus,
+.card-details .formItem .formInput:valid{
+  border-color: pink;
+}
+
+.avatar{
+  width: 100%;
+  margin-top: 5px;
+}
+form .buttonUpdate{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form .buttonUpdate button{
+  padding: 10px 0;
+  margin-top: 10px;
+  height: 100%;
+  width: 50%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: linear-gradient(to right top, #6b6bd1, #6c77d7, #6f83dc, #748fe0, #7b9ae3, #73a7ec, #6db3f3, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}

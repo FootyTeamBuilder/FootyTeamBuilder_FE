@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const authSlice = createSlice({
     name: "auth",
     initialState:{
@@ -11,7 +10,8 @@ const authSlice = createSlice({
         register:{
             isFetching: false,
             error: false,
-            success: false
+            success: false,
+            account: null
         },
     },
     reducers:{
@@ -30,10 +30,11 @@ const authSlice = createSlice({
         registerStart: (state) =>{
             state.register.isFetching = true;
         },
-        registerSuccess: (state) => {
+        registerSuccess: (state,action) => {
             state.register.isFetching = false;
             state.register.error = false;
             state.register.success = true;
+            state.register.account = action.payload;
         },
         registerFailed: (state) =>{
             state.register.isFetching = false;

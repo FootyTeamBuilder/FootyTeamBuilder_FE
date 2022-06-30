@@ -5,16 +5,13 @@ import { useState } from "react";
 import { updateInformation } from "../../redux/apiRequest";
 
 const UpdateInfor = () => {
-  const user = useSelector((state) => state.auth.login?.message);
-  const currentInfo1 = JSON.parse(
-    useSelector((state) => state.auth.login?.currentUser)
-  );
-  const currentInfo2 = JSON.parse(
+  const user = useSelector((state) => state.auth.login?.currentUser);
+  const currentInfo2 = 
     useSelector((state) => state.user.userInfo?.currentInfo)
-  );
-  const [name, setName] = useState(currentInfo2 ? currentInfo2.name : "");
+  ;
+  const [name, setName] = useState(currentInfo2.name ? currentInfo2.name : "");
   const [email, setEmail] = useState(
-    currentInfo2 ? currentInfo2.email : currentInfo1.email
+    currentInfo2 ? currentInfo2.email : currentInfo2.email
   );
   const [phonenumber, setPhonenumber] = useState(
     currentInfo2 ? currentInfo2.phonenumber : ""
@@ -23,7 +20,7 @@ const UpdateInfor = () => {
     currentInfo2 ? currentInfo2.achivements : null
   );
   const [password, setPassword] = useState(
-    currentInfo1.password
+    currentInfo2.password
   );
 
   const dispatch = useDispatch();
@@ -35,6 +32,7 @@ const UpdateInfor = () => {
       email: email,
       achivements: achivements,
       phonenumber: phonenumber,
+      password: password,
     };
     updateInformation(userInfo, dispatch, user?.token);
   };

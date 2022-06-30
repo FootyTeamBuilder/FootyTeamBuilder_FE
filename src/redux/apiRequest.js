@@ -4,7 +4,6 @@ import {
   loginFailed,
   loginStart,
   loginSuccess,
-  loginMessage,
   registerFailed,
   registerStart,
   registerSuccess,
@@ -12,14 +11,14 @@ import {
   logOutSuccess,
   logOutFailed
 } from "./authSlice";
-import { updateStart, updateSuccess,updateMessage,updateLogout ,updateFailed } from "./userSlice";
+import { updateStart, updateSuccess,updateMessage,updateLogin,updateLogout ,updateFailed } from "./userSlice";
 import { createStart, createSuccess, createFailed } from "./teamSlice";
 export const login = async (user, dispatch, navigate) => {
   dispatch(loginStart());
   try {
     const res = await axios.post("/auth/login", user);
-    dispatch(loginSuccess(res.config.data));
-    dispatch(loginMessage(res.data));
+    dispatch(loginSuccess(res.data));
+    dispatch(updateLogin(res.data.data));
     toast.success('Đăng nhập thành công');
     navigate("/");
   } catch (err) {

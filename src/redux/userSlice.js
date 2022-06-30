@@ -17,10 +17,13 @@ export const userSlice = createSlice({
        updateSuccess: (state,action) => {
         state.userInfo.pending = false;
         state.userInfo.error = false;
-        state.userInfo.currentInfo = action.payload; 
+        state.userInfo.currentInfo = JSON.parse(action.payload); 
        },
        updateMessage: (state,action) => {
          state.userInfo.message = action.payload;
+       },
+       updateLogin : (state,action) => {
+        state.userInfo.currentInfo = action.payload;
        },
        updateLogout: (state) => {
          state.userInfo.currentInfo = null;
@@ -32,5 +35,5 @@ export const userSlice = createSlice({
     },
 });
 
-export const {updateStart, updateSuccess,updateMessage,updateLogout, updateFailed} = userSlice.actions;
+export const {updateStart, updateSuccess,updateMessage,updateLogin,updateLogout, updateFailed} = userSlice.actions;
 export default userSlice.reducer;

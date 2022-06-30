@@ -42,7 +42,7 @@ export const register = async (user, dispatch, navigate) => {
   }
 };
 
-export const logOut = async (dispatch, id, navigate, accessToken, axiosJWT) => {
+export const logOut = async (dispatch,navigate,id, accessToken, axiosJWT) => {
   dispatch(logOutStart());
   try {
     localStorage.clear();

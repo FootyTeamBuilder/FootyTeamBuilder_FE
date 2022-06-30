@@ -10,13 +10,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import Spinner from '../../components/loading/Spinner';
 import { MessageOutlined } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const AllTeam = () => {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const [teamList, setTeamList] = useState([]);
 
     const getTeamList = async (params) => {
-        const response = await axios.get(`http://localhost:8080/team/list/${params}`);
+        const response = await axios.get(`/team/list/${params}`);
         setTeamList(response.data.data);
         setIsLoading(false);
     }
@@ -73,7 +75,13 @@ const AllTeam = () => {
             <div className="teams-div">
                 {
                     teamList.map((t) => {
-                        return <TeamItem name={t.name} level={t.level} avatar='blank-avatar.jpg' />
+                        return <TeamItem 
+                                    key={t.name}
+                                    name={t.name} 
+                                    level={t.level} 
+                                    avatar='blank-avatar.jpg' 
+                                    onClick={(e) => navigate(`/team-info/${t._id}`)}
+                                />
                     })
                 }
             </div>

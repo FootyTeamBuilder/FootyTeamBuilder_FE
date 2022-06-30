@@ -1,0 +1,22 @@
+.team-info {
+
+}
+
+.team-info .team-info-detail {
+    display: flex;
+    background-color: #FFF3E0;
+    box-sizing: border-box;
+    padding: 3rem;
+    column-gap: 5vw;
+}
+
+.team-info .team-info-detail .avatar {
+    width: 17rem;
+    border-radius: 50%;
+}
+
+.team-info .team-info-detail .right h1 {
+    color: #63A44C;
+    font-size: 3rem;
+    margin: 0;
+}

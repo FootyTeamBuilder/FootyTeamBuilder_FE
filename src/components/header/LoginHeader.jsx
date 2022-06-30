@@ -9,6 +9,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/apiRequest';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 
 const LoginHeader = () => {
 
@@ -32,7 +33,6 @@ const LoginHeader = () => {
             </div>
             <div className="header-child right">
                 <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Trang chủ</NavLink>
-                <NavLink to='/about' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Về chúng tôi</NavLink>
                 <NavLink to='/all-team' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Đội bóng</NavLink>
                 <NavLink to='/league' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Giải đấu</NavLink>
                 <NavLink to='/contact' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Liên hệ</NavLink>
@@ -81,6 +81,9 @@ const LoginHeader = () => {
                         </Link>
                         <Link to='#'>
                             <GroupIcon /> Hồ sơ đội bóng
+                        </Link>
+                        <Link to='/update-match'>
+                            <SportsSoccerIcon /> Trận đấu của tôi
                         </Link>
                         <Link to='/login' onClick={(e) => logOut(dispatch,navigate)}>
                             <LogoutIcon /> Đăng xuất

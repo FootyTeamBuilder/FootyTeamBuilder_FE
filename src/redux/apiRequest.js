@@ -4,6 +4,7 @@ import {
   loginFailed,
   loginStart,
   loginSuccess,
+  loginMessage,
   registerFailed,
   registerStart,
   registerSuccess,
@@ -11,15 +12,15 @@ import {
   logOutSuccess,
   logOutFailed
 } from "./authSlice";
-import { updateStart, updateSuccess, updateFailed } from "./userSlice";
+import { updateStart, updateSuccess,updateMessage,updateLogout ,updateFailed } from "./userSlice";
 import { createStart, createSuccess, createFailed } from "./teamSlice";
 export const login = async (user, dispatch, navigate) => {
   dispatch(loginStart());
   try {
     const res = await axios.post("/auth/login", user);
-    dispatch(loginSuccess(res.data));
+    dispatch(loginSuccess(res.config.data));
+    dispatch(loginMessage(res.data));
     toast.success('Đăng nhập thành công');
-
     navigate("/");
   } catch (err) {
     dispatch(loginFailed());
@@ -30,8 +31,9 @@ export const login = async (user, dispatch, navigate) => {
 export const register = async (user, dispatch, navigate) => {
   dispatch(registerStart());
   try {
-    await axios.post("/auth/register", user);
-    dispatch(registerSuccess());
+    const res = await axios.post("/auth/register", user);
+    dispatch(registerSuccess(res.data));
+    console.log(res);
     toast.success('Đăng ký thành công');
     navigate("/login");
   } catch (err) {
@@ -45,8 +47,9 @@ export const logOut = async (dispatch, id, navigate, accessToken, axiosJWT) => {
   try {
     localStorage.clear();
     dispatch(logOutSuccess());
+    dispatch(updateLogout());
     toast.success('Đăng xuất thành công');
-    // navigate("/login");
+    navigate("/login");
   } catch (err) {
     dispatch(logOutFailed());
     toast.error('Đăng xuất thất bại');
@@ -61,6 +64,7 @@ export const updateInformation = async (userInfo, dispatch, token) => {
     });
     console.log(res);
     dispatch(updateSuccess(res.config.data));
+    dispatch(updateMessage(res.data));
   } catch (error) {
     dispatch(updateFailed());
   }

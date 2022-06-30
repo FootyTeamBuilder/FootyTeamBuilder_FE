@@ -13,6 +13,7 @@ import { logOut } from '../../redux/apiRequest';
 const LoginHeader = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpenProfileDropdown, setIsOpenProfileDropdown] = useState(false);
     const [isOpenNoti, setIsOpenNoti] = useState(false);
@@ -75,13 +76,13 @@ const LoginHeader = () => {
                         }}
                     />
                     <div className={isOpenProfileDropdown? 'dropdown-profile is-opened' : 'dropdown-profile'}>
-                        <Link to='#'>
+                        <Link to='edit-information'>
                             <AccountBoxIcon /> Hồ sơ của tôi
                         </Link>
                         <Link to='#'>
                             <GroupIcon /> Hồ sơ đội bóng
                         </Link>
-                        <Link to='#' onClick={(e) => logOut(dispatch)}>
+                        <Link to='/login' onClick={(e) => logOut(dispatch,navigate)}>
                             <LogoutIcon /> Đăng xuất
                         </Link>
                     </div>

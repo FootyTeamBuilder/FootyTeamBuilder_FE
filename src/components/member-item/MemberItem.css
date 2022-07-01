@@ -1,0 +1,74 @@
+.member-item {
+    position: relative;
+    width: 15rem;
+    height: 25rem;
+    background-color: white;
+    border: 0.5px solid #63A44C;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5rem 1rem 2rem 1rem;
+    box-sizing: border-box;
+}
+.member-item:hover {
+    box-shadow: 1px 3px 9px #63a44c92;
+}
+
+.member-item .role {
+
+}
+
+.member-item .avatar {
+    width: 8rem;
+    margin-bottom: 15px;
+}
+
+.member-item .name {
+    color: #63A44C;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.member-item .nickname {
+    margin-bottom: 1rem;
+}
+
+.member-item span {
+    font-weight: 600;
+}
+
+.member-item .ribbon3 {
+    /* z-index: 1; */
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 15px;
+    position: absolute;
+    left: -9px;
+    top: 20px;
+    background: #63A44C;
+    color: white;
+}
+.member-item .ribbon3:before, .ribbon3:after {
+    content: "";
+    position: absolute;
+}
+.member-item .ribbon3:before {
+    height: 0;
+    width: 0;
+    top: -8.5px;
+    left: 0.1px;
+    border-bottom: 9px solid green;
+    border-left: 9px solid transparent;
+}
+.member-item .ribbon3:after {
+    height: 0;
+    width: 0;
+    right: -14.5px;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 15px solid #63A44C;
+}

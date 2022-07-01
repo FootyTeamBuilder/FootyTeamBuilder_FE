@@ -1,9 +1,9 @@
 import './TeamItem.css';
 
-const TeamItem = ({avatar, name, level}) => {
+const TeamItem = ({avatar, name, level, onClick}) => {
 
     return (
-        <div className="team-item">
+        <div className="team-item" onClick={onClick}>
             <img src={require(`../../assets/${avatar}`)} className='team-avatar' alt="" />
             <div className='name'>{name}</div>
             <hr />

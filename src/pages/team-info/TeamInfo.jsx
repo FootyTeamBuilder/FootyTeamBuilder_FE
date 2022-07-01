@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import {useState} from 'react'
 import { useParams } from 'react-router-dom'
 import Spinner from '../../components/loading/Spinner';
+import MemberItem from '../../components/member-item/MemberItem';
 import './TeamInfo.css';
 
 const TeamInfo = () => {
@@ -23,19 +24,46 @@ const TeamInfo = () => {
 
     if(isLoading) return <Spinner />;
 
+    console.log(teamInfo);
+
     return (
         <div className="team-info">
             <div className="team-info-detail">
-                <img src={require('../../assets/blank-avatar.jpg')} alt="" className='avatar' />
+                <img src={require('../../assets/blank-avatar.jpg')} alt="" className='avatar' /> {/* thay bang logo */}
                 <div className="right">
                     <h1>{teamInfo.team.name}</h1>
-                    <div className="grid">
-                        {teamInfo.team.level}
+                    <div className="info-detail">
+                        <div className='grid-item'><span>Giới thiệu:</span> {teamInfo.team.description}</div>
+                        <div className="grid-item"><span>Trình độ:</span> {teamInfo.team.level}</div>
+                        <div className="grid-item"><span>Độ tuổi:</span> {teamInfo.team.age.minAge} - {teamInfo.team.age.maxAge}</div>
+                        <div className="grid-item"><span>Áo đấu:</span> {teamInfo.team.kits}</div>
+                        <div className="grid-item"><span>Khu vực:</span> {teamInfo.team.area}</div>
+                        <div className="grid-item"><span>Thời gian chơi bóng:</span> {teamInfo.team.time}</div>
                     </div>
                 </div>
             </div>
             <div className="members">
-
+                <h1>Danh sách thành viên</h1>
+                <div className="members-grid">
+                    <MemberItem 
+                        avatar='blank-avatar.jpg'
+                        name={teamInfo.captain.name}
+                        role='Đội trưởng'
+                        number=''
+                    />
+                    {
+                        teamInfo.members.map(t => {
+                            return <MemberItem
+                                key={t.member._id}
+                                avatar='blank-avatar.jpg'
+                                name={t.info?.name}
+                                role={t.member.role}
+                                nickname={t.member.nickname}
+                                number={t.member.number}
+                            />
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

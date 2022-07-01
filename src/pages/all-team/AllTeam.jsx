@@ -4,7 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import TeamItem from '../../components/all-team/TeamItem';
+import TeamItem from '../../components/team-item/TeamItem';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';

@@ -1,29 +1,53 @@
-import { createSlice} from '@reduxjs/toolkit';
-
-export const teamSlice = createSlice({
-    name : 'team',
-    initialState : {
-        newTeam : {
-            messageTeam : null,
+import { createSlice } from '@reduxjs/toolkit';
+const teamSlice = createSlice({
+    name: 'team',
+    initialState: {
+        newTeam: {
+            teamInfo: null,
+            messageTeam: null,
             pending: false,
-            error: false,
+            error: false
+        },
+        editTeam: {
+            teamInfo: null,
+            messageTeam: null,
+            pendingEdit: false,
+            error: false
         },
     },
-    reducers : {
-        createStart : (state) => {
+    reducers: {
+        createStart: (state) => {
             state.newTeam.pending = true;
         },
-        createSuccess : (state,action) => {
+        createSuccess: (state, action) => {
             state.newTeam.pending = false;
             state.newTeam.error = false;
+            state.newTeam.teamInfo = action.payload;
+        },
+        createMessage: (state, action) => {
             state.newTeam.messageTeam = action.payload;
         },
-        createFailed : (state) => {
+        createFailed: (state) => {
             state.newTeam.pending = false;
             state.newTeam.error = true;
+        },
+        editStart: (state) => {
+            state.editTeam.pendingEdit = true;
+        },
+        editSuccess: (state, action) => {
+            state.editTeam.pendingEdit = false;
+            state.editTeam.error = false;
+            state.editTeam.teamInfo = action.payload;
+        },
+        editMessage: (state, action) => {
+            state.editTeam.messageTeam = action.payload;
+        },
+        editFailed: (state) => {
+            state.editTeam.pendingEdit = false;
+            state.editTeam.error = true;
         },
     },
 });
 
-export const {createStart, createSuccess, createFailed} = teamSlice.actions;
+export const { createStart, createSuccess, createMessage, createFailed,editStart, editSuccess, editMessage, editFailed } = teamSlice.actions;
 export default teamSlice.reducer;

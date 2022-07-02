@@ -79,7 +79,7 @@ const LoginHeader = () => {
                         <Link to='edit-information'>
                             <AccountBoxIcon /> Hồ sơ của tôi
                         </Link>
-                        <Link to='#'>
+                        <Link to='edit-team'>
                             <GroupIcon /> Hồ sơ đội bóng
                         </Link>
                         <Link to='/update-match'>

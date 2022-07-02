@@ -6,6 +6,7 @@ import { updateInformation } from "../../redux/apiRequest";
 
 const UpdateInfor = () => {
   const user = useSelector((state) => state.auth.login?.currentUser);
+  const info = useSelector((state) => state.user.userInfo?.pending);
   const currentInfo2 = 
     useSelector((state) => state.user.userInfo?.currentInfo)
   ;
@@ -19,8 +20,13 @@ const UpdateInfor = () => {
   const [achivements, setAchievements] = useState(
     currentInfo2 ? currentInfo2.achivements : null
   );
+  const [dateOfBirth, setDateOfBirth] = useState(
+    currentInfo2 ? currentInfo2.dateOfBirth.substring(0,10) : null
+  );
+  const [year,month,day] = dateOfBirth.split('-');
+  console.log(dateOfBirth , typeof dateOfBirth);
   const [password, setPassword] = useState(
-    currentInfo2.password
+    user.password
   );
 
   const dispatch = useDispatch();
@@ -32,8 +38,9 @@ const UpdateInfor = () => {
       email: email,
       achivements: achivements,
       phonenumber: phonenumber,
-      password: password,
+      dateOfBirth: new Date(+year, +month-1 , +day+1),
     };
+    console.log(userInfo, typeof userInfo);
     updateInformation(userInfo, dispatch, user?.token);
   };
 
@@ -69,7 +76,7 @@ const UpdateInfor = () => {
                 <input
                   value={email}
                   className="formInput"
-                  type="text"
+                  type="email"
                   placeholder="Enter your email address"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -77,10 +84,11 @@ const UpdateInfor = () => {
               <div className="formItem">
                 <label className="labelInfor">Date of birth</label>
                 <input
+                  value={dateOfBirth}
                   className="formInput"
-                  type="text"
+                  type="date"
                   placeholder="Enter your dateOfBirth"
-                  // onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setDateOfBirth(e.target.value)}
                 />
               </div>
               <div className="formItem">
@@ -119,17 +127,14 @@ const UpdateInfor = () => {
           </div>
           <div className="buttonUpdate">
             <button
-              // disabled={`user.pending`}
+              disabled={info}
               className="updateButton"
               onClick={handleUpdate}
             >
               Update
             </button>
           </div>
-          {/* {user.error && <span className="error">Something went wrong!</span>}
-          {user.pending === false && (
-            <span className="success">Account has been updated!</span>
-          )} */}
+     
         </form>
       </div>
     </div>

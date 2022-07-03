@@ -10,7 +10,7 @@ const UpdateInfor = () => {
   const currentInfo2 = 
     useSelector((state) => state.user.userInfo?.currentInfo)
   ;
-  const [name, setName] = useState(currentInfo2.name ? currentInfo2.name : "");
+  const [name, setName] = useState(currentInfo2? currentInfo2.name : "");
   const [email, setEmail] = useState(
     currentInfo2 ? currentInfo2.email : currentInfo2.email
   );
@@ -24,7 +24,6 @@ const UpdateInfor = () => {
     currentInfo2 ? currentInfo2.dateOfBirth.substring(0,10) : null
   );
   const [year,month,day] = dateOfBirth.split('-');
-  console.log(dateOfBirth , typeof dateOfBirth);
   const [password, setPassword] = useState(
     user.password
   );

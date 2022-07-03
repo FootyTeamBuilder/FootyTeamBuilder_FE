@@ -40,7 +40,6 @@ const UpdateInfor = () => {
       phonenumber: phonenumber,
       dateOfBirth: new Date(+year, +month-1 , +day+1),
     };
-    console.log(userInfo, typeof userInfo);
     updateInformation(userInfo, dispatch, user?.token);
   };
 

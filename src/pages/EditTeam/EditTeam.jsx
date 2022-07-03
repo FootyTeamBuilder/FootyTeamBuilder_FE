@@ -7,18 +7,18 @@ import { editTeamInfo } from "../../redux/apiRequest";
 
 const EditTeam = () => {
   const user = useSelector((state)=> state.auth.login?.currentUser);
-  const teamInitial = useSelector((state)=> state.team.newTeam?.teamInfo);
+  const team = useSelector((state)=> state.team.newTeam?.teamInfo);
   const teamId = useSelector((state)=> state.team.newTeam?.messageTeam.id);
-  const teamEdit = useSelector((state)=> state.team.editTeam?.teamInfo);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [level, setLevel] = useState("vui vẻ");
-  const [minage, setMinage] = useState();
-  const [maxage, setMaxage] = useState();
-  const [area, setArea] = useState("");
-  const [kits, setKits] = useState("");
-  const [logo, setLogo] = useState("");
-  const [time, setTime] = useState();
+  const teamEdit = useSelector((state)=> state.team.editTeam?.pendingEdit);
+  const [name, setName] = useState(team.name?team.name:'');
+  const [description, setDescription] = useState(team.description?team.description:'');
+  const [level, setLevel] = useState(team.level?team.level:"vui vẻ");
+  const [minage, setMinage] = useState(team.minAge?team.minAge:null);
+  const [maxage, setMaxage] = useState(team.maxAge?team.maxAge:null); 
+  const [area, setArea] = useState(team.area?team.area:'');
+  const [kits, setKits] = useState(team.kits?team.kits:'');
+  const [logo, setLogo] = useState(team.logo?team.logo:'');
+  const [time, setTime] = useState(team.time?team.time:'');
 
   const dispatch = useDispatch();
   
@@ -35,8 +35,6 @@ const EditTeam = () => {
       logo: logo,
       time: time,
     };
-    
-    console.log(teamId,typeof teamId,teamInfo, typeof teamInfo);
     editTeamInfo(teamInfo,dispatch,teamId,user?.token);
   };
 
@@ -56,6 +54,7 @@ const EditTeam = () => {
               <div className="formItem">
                 <label className="labelInfor">Team </label>
                 <input
+                  value={name}
                   className="formInput"
                   type="text"
                   placeholder='Enter your team name'
@@ -66,6 +65,7 @@ const EditTeam = () => {
                 <label className="labelInfor">Description</label>
                 <input
                   className="formInput"
+                  value={description}
                   type="text"
                   placeholder='Enter team description'
                   onChange={(e) => setDescription(e.target.value)}
@@ -75,6 +75,7 @@ const EditTeam = () => {
                 <label className="labelInfor">Min Age</label>
                 <input
                   className="formInput"
+                  value={minage}
                   type="number"
                   placeholder="Enter number > 18"
                   onChange={(e) => setMinage(e.target.value)}
@@ -84,6 +85,7 @@ const EditTeam = () => {
                 <label className="labelInfor">Max Age</label>
                 <input
                   className="formInput"
+                  value={maxage}
                   type="number"
                   placeholder="Enter number < 35"
                   onChange={(e) => setMaxage(e.target.value)}
@@ -93,6 +95,7 @@ const EditTeam = () => {
                 <label className="labelInfor">Area</label>
                 <input
                   className="formInput"
+                  value={area}
                   type="text"
                   placeholder="Enter your area"
                   onChange={(e) => setArea(e.target.value)}
@@ -102,6 +105,7 @@ const EditTeam = () => {
                 <label className="labelInfor">Time</label>
                 <input
                   className="formInput"
+                  value={time}
                   type="datetime-local"
                   placeholder="Enter your area"
                   onChange={(e) => setTime(e.target.value)}
@@ -111,6 +115,7 @@ const EditTeam = () => {
                 <label className="labelInfor">Kits</label>
                 <input
                   className="formInput"
+                  value={kits}
                   type="checkbox"
                   placeholder="Enter your kits"
                   onChange={(e) => setKits(e.target.value)}
@@ -118,7 +123,7 @@ const EditTeam = () => {
               </div>
               <div className="formItem">
                 <label className="labelInfor">Level</label>
-                <select className="formSelect" onChange={(e) => setLevel(e.target.value)}>
+                <select className="formSelect" value={level} onChange={(e) => setLevel(e.target.value)}>
                   <option value="vui vẻ">vui vẻ</option>
                   <option value="yếu">yếu</option>
                   <option value="trung bình">trung bình</option>
@@ -131,7 +136,7 @@ const EditTeam = () => {
           </div>
           <div className="buttonUpdate">
           <button
-            // disabled={`user.pending`}
+            disabled={teamEdit}
             className="updateButton"
             onClick={handleEdit}
           >

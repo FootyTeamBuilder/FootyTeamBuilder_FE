@@ -9,7 +9,6 @@ const teamSlice = createSlice({
             error: false
         },
         editTeam: {
-            teamInfo: null,
             messageTeam: null,
             pendingEdit: false,
             error: false
@@ -22,7 +21,7 @@ const teamSlice = createSlice({
         createSuccess: (state, action) => {
             state.newTeam.pending = false;
             state.newTeam.error = false;
-            state.newTeam.teamInfo = action.payload;
+            state.newTeam.teamInfo = JSON.parse(action.payload);
         },
         createMessage: (state, action) => {
             state.newTeam.messageTeam = action.payload;
@@ -37,7 +36,7 @@ const teamSlice = createSlice({
         editSuccess: (state, action) => {
             state.editTeam.pendingEdit = false;
             state.editTeam.error = false;
-            state.editTeam.teamInfo = action.payload;
+            state.newTeam.teamInfo = JSON.parse(action.payload);
         },
         editMessage: (state, action) => {
             state.editTeam.messageTeam = action.payload;

@@ -1,0 +1,86 @@
+.team-history {}
+
+.team-history .search {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #FFF3E0;
+    padding: 1rem 5rem 1rem 5rem;
+}
+
+.team-history .search h1 {
+    color: #63A44C;
+}
+
+.team-history .search .input-container {
+    position: relative;
+    border: 1px solid black;
+}
+.team-history .search .input-container input {
+    background-color: white;
+    height: 3.5rem;
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    padding-left: 3rem;
+}
+.team-history .search .input-container svg {
+    left: 1rem;
+    top: 1rem;
+    position: absolute;
+}
+
+.team-history .matches {
+    background-color: #FFFCF7;
+    padding: 4rem 5vw 4rem 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+}
+
+.team-history .matches .match-item {
+    border: 1px solid black;
+    background-color: white;
+    width: 65vw;
+    height: 14rem;
+    display: flex;
+    align-items: center;
+}
+.team-history .matches .match-item .left {
+    color: white;
+    width: 5rem;
+    font-weight: 500;
+    font-size: 1.3rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-history .matches .match-item .middle {
+    margin: auto;
+}
+.team-history .matches .match-item .score-middle {
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+}
+.team-history .matches .match-item .score-middle .avatar {
+    width: 5rem;
+    border-radius: 50%;
+}
+.team-history .matches .match-item .score-middle .team {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+.team-history .matches .match-item .score-middle .score {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #63A44C;
+}
+.team-history .matches .match-item .middle .match-info {
+    text-align: center;
+    line-height: 2rem;
+    font-weight: 500;
+}

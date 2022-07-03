@@ -15,6 +15,7 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 const LoginHeader = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpenProfileDropdown, setIsOpenProfileDropdown] = useState(false);
     const [isOpenNoti, setIsOpenNoti] = useState(false);
@@ -76,7 +77,7 @@ const LoginHeader = () => {
                         }}
                     />
                     <div className={isOpenProfileDropdown? 'dropdown-profile is-opened' : 'dropdown-profile'}>
-                        <Link to='#'>
+                        <Link to='edit-information'>
                             <AccountBoxIcon /> Hồ sơ của tôi
                         </Link>
                         <Link to='#'>
@@ -88,7 +89,7 @@ const LoginHeader = () => {
                         <Link to='/team-history'>
                             <LibraryBooksIcon /> Lịch sử đấu
                         </Link>
-                        <Link to='#' onClick={(e) => logOut(dispatch)}>
+                        <Link to='/login' onClick={(e) => logOut(dispatch,navigate)}>
                             <LogoutIcon /> Đăng xuất
                         </Link>
                     </div>

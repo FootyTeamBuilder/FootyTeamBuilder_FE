@@ -46,7 +46,7 @@
     color: #63A44C;
 }
 .header a.inactive {
-    color: black;
+    /* color: black; */
 }
 
 .header .avatar {

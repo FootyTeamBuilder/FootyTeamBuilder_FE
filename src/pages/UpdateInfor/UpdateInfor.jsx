@@ -18,12 +18,12 @@ const UpdateInfor = () => {
     currentInfo2 ? currentInfo2.phonenumber : ""
   );
   const [achivements, setAchievements] = useState(
-    currentInfo2 ? currentInfo2.achivements : null
+    currentInfo2 ? currentInfo2.achivements : ''
   );
   const [dateOfBirth, setDateOfBirth] = useState(
-    currentInfo2 ? currentInfo2.dateOfBirth.substring(0,10) : null
+    currentInfo2.dateOfBirth ? currentInfo2.dateOfBirth.substring(0,10) : ''
   );
-  const [year,month,day] = dateOfBirth.split('-');
+  
   const [password, setPassword] = useState(
     user.password
   );
@@ -32,6 +32,7 @@ const UpdateInfor = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
+    const [year,month,day] = dateOfBirth.split('-');
     const userInfo = {
       name: name,
       email: email,

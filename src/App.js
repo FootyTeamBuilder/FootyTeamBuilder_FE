@@ -13,6 +13,7 @@ import AllTeam from "./pages/all-team/AllTeam";
 import UpdateMatch from "./pages/update-match/UpdateMatch";
 import UpdateInfor from "./pages/UpdateInfor/UpdateInfor";
 import CreateTeam from "./pages/CreateTeam/CreateTeam"
+import EditTeam from "./pages/EditTeam/EditTeam";
 import TeamInfo from "./pages/team-info/TeamInfo";
 import TeamHistory from "./pages/team-history/TeamHistory";
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/update-match" element={<UpdateMatch />} />
           <Route path="/edit-information" element={<UpdateInfor/>} />
           <Route path="/create" element={<CreateTeam />} />
+          <Route path="/edit-team" element={<EditTeam />} />
           <Route path="/team-history" element={<TeamHistory />} />
         </Routes>
         <Routes>

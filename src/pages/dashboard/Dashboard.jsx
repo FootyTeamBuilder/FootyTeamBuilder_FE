@@ -24,7 +24,7 @@ const Dashboard = () => {
               height="3rem"
               width="10rem"
               fontSize="1rem"
-              action={(e) => navigate('/register')}
+              action={(e) => navigate('/create')}
             />
           </div>
           <div className="right">

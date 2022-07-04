@@ -165,6 +165,17 @@
     border-bottom-width: 2px;
     transition: all 0.3s ease;
   }
+  .updateWrapper .card-details .formItem select.formSelect {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+  }
   .updateWrapper .card-details .formItem .formInput:focus,
   .updateWrapper .card-details .formItem .formInput:valid{
     border-color: pink;

@@ -27,7 +27,6 @@ const AllTeam = () => {
         getTeamList('');
     },[]);
 
-    console.log(teamList);
     if(isLoading) return <Spinner />;
 
     return (

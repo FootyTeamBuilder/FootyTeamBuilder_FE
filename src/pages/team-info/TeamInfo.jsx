@@ -5,12 +5,15 @@ import { useParams } from 'react-router-dom'
 import Spinner from '../../components/loading/Spinner';
 import MemberItem from '../../components/member-item/MemberItem';
 import './TeamInfo.css';
+import '../../components/common/button/Button';
+import Button from '../../components/common/button/Button';
 
 const TeamInfo = () => {
 
     const {teamId} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [teamInfo, setTeamInfo] = useState();
+    const [openMatching, setOpenMatching] = useState(false);
 
     const getTeamInfo = async () => {
         const response = await axios.get(`/team/view-team/${teamId}`);
@@ -40,6 +43,7 @@ const TeamInfo = () => {
                         <div className="grid-item"><span>Khu vực:</span> {teamInfo.team.area}</div>
                         <div className="grid-item"><span>Thời gian chơi bóng:</span> {teamInfo.team.time}</div>
                     </div>
+                    <button className='matching-btn' onClick={(e) => setOpenMatching(true)}>Bắt đối</button>
                 </div>
             </div>
             <div className="members">
@@ -65,6 +69,20 @@ const TeamInfo = () => {
                     }
                 </div>
             </div>
+            {
+                openMatching &&
+                <div className='matching-form'>
+                    <div className="content">
+                        <button className='close' onClick={(e) => setOpenMatching(false)}>X</button>
+                        <div className='title'>Thư mời</div>
+                        <textarea placeholder='Lời mời' className='invite' rows='5' />
+                        <input type="text" placeholder='Địa điểm trận đấu' />
+                        <input type="datetime-local" />
+                        <button className='submit'>Gửi</button>
+                    </div>
+                    <div className="background" onClick={(e) => setOpenMatching(false)}></div>
+                </div>
+            }
         </div>
     )
 }

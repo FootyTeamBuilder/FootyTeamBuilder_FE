@@ -126,7 +126,6 @@
 }
 
 .header .noti .noti-item {
-    cursor: pointer;
     display: flex;
     align-items: center;
     padding: 0.5rem 1.8rem 0.5rem 1.8rem;
@@ -143,4 +142,28 @@
 
 .header .noti .noti-item span {
     color: #63A44C;
+}
+
+.header .noti .noti-item button { 
+    cursor: pointer; 
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+}
+.header .noti .noti-item button.accept {
+    background-color: #63A44C;
+    border: none;
+    color: white;
+}
+.header .noti .noti-item button.accept:hover {
+    background-color: #588f43;
+}
+.header .noti .noti-item button.reject {
+    background-color: #fff3e0;
+    border: 1px solid black;
+    color: black;
+}
+.header .noti .noti-item button.reject:hover {
+    background-color: #FFFCF7;
 }

@@ -7,6 +7,8 @@ import MemberItem from '../../components/member-item/MemberItem';
 import './TeamInfo.css';
 import '../../components/common/button/Button';
 import Button from '../../components/common/button/Button';
+import { requestJoinTeam } from '../../redux/apiRequest';
+import { useSelector } from 'react-redux';
 
 const TeamInfo = () => {
 
@@ -14,6 +16,8 @@ const TeamInfo = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [teamInfo, setTeamInfo] = useState();
     const [openMatching, setOpenMatching] = useState(false);
+    const [openJoinTeam, setOpenJoinTeam] = useState(false);
+    const user = useSelector((state) => state.auth.login?.currentUser);
 
     const getTeamInfo = async () => {
         const response = await axios.get(`/team/view-team/${teamId}`);
@@ -26,8 +30,6 @@ const TeamInfo = () => {
     }, []);
 
     if(isLoading) return <Spinner />;
-
-    console.log(teamInfo);
 
     return (
         <div className="team-info">
@@ -44,6 +46,7 @@ const TeamInfo = () => {
                         <div className="grid-item"><span>Thời gian chơi bóng:</span> {teamInfo.team.time}</div>
                     </div>
                     <button className='matching-btn' onClick={(e) => setOpenMatching(true)}>Bắt đối</button>
+                    <button className='join-team-btn' onClick={(e) => setOpenJoinTeam(true)}>Tham gia đội</button>
                 </div>
             </div>
             <div className="members">
@@ -81,6 +84,27 @@ const TeamInfo = () => {
                         <button className='submit'>Gửi</button>
                     </div>
                     <div className="background" onClick={(e) => setOpenMatching(false)}></div>
+                </div>
+            }
+            {
+                openJoinTeam &&
+                <div className="join-team-confirm">
+                    <div className="content">
+                        <h2>Bạn có xác nhận yêu cầu tham gia đội không?</h2>
+                        <div>
+                            <button 
+                                className='confirm'
+                                onClick={(e) => {
+                                    requestJoinTeam(teamId, user?.token);
+                                    setOpenJoinTeam(false);
+                                }}
+                            >
+                                Xác nhận
+                            </button>
+                            <button className='cancel' onClick={(e) => setOpenJoinTeam(false)}>Huỷ</button>
+                        </div>
+                    </div>
+                    <div className="background" onClick={(e) => setOpenJoinTeam(false)}></div>
                 </div>
             }
         </div>

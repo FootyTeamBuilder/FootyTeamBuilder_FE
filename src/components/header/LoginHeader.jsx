@@ -12,6 +12,7 @@ import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import moment from 'moment';
 
 const LoginHeader = () => {
 
@@ -62,7 +63,7 @@ const LoginHeader = () => {
                         } 
                     />
                     <div className={isOpenNoti? 'noti is-opened' : 'noti'}>
-
+        
                         {
                             notiList.length === 0 ? <div className='noti-item'>Bạn không có thông báo</div> :
                             notiList.map(n => {
@@ -70,7 +71,7 @@ const LoginHeader = () => {
                                     <img src={require('../../assets/pep.jpg')} alt="" />
                                     <div>
                                         <p>{n.content}</p>
-                                        <span>{n.createdAt}</span>
+                                        <div className='time'>{ moment(n.createdAt).fromNow()}</div>
                                         <button className='accept'>Chấp nhận</button>
                                         <button className='reject'>Từ chối</button>
                                     </div>

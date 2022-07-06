@@ -140,7 +140,7 @@
     margin-right: 1rem;
 }
 
-.header .noti .noti-item span {
+.header .noti .noti-item .time {
     color: #63A44C;
 }
 

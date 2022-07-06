@@ -112,3 +112,17 @@ export const editTeamInfo = async (teamInfo, dispatch, teamId, token) => {
     dispatch(editFailed());
   }
 };
+
+export const requestJoinTeam = async (teamId, token) => {
+  try {
+    const response = await axios.put(`/user/request-to-join/${teamId}`, {},
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
+    toast.success('Xin gia nhập đội bóng thành công!');
+  } catch (error) {
+    console.log(error);
+    toast.error('Xin gia nhập đội bóng thất bại');
+  }
+}

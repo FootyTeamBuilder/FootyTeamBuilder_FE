@@ -4,7 +4,9 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import PreviewIcon from '@mui/icons-material/Preview';
-const MemberItem = ({ avatar, name, role, nickname, number,onClick}) => {
+import { useNavigate } from 'react-router-dom';
+const MemberItem = ({ avatar, name, role, nickname, number,onClick,teamId,memberId}) => {
+    const navigate = useNavigate();
     return (
         <div className="member-item" onClick={onClick}>
             <span className="ribbon3">{role}</span>
@@ -14,10 +16,10 @@ const MemberItem = ({ avatar, name, role, nickname, number,onClick}) => {
             <div className="number"><span>Số áo:</span> {number}</div>
             <div>
             <IconButton aria-label="preview">
-                <PreviewIcon />
+                <PreviewIcon onClick={(e) => navigate(`/member-info/${memberId}`)}/>
             </IconButton>
             <IconButton aria-label="edit">
-                <EditIcon />
+                <EditIcon onClick={(e)=> navigate(`/edit-member/${teamId}/${memberId}`)}/>
             </IconButton>
             <IconButton aria-label="delete">
                 <DeleteIcon />

@@ -1,41 +1,41 @@
 import React from "react";
-import "./editMember.css";
+import "./createMember.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { createMember, editMemberInfo } from "../../redux/apiRequest";
+import { createMember, editTeamInfo } from "../../redux/apiRequest";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { useNavigate, useParams } from "react-router-dom";
-const EditMember = () => {
-  const navigate = useNavigate();
+const CreateMember = () => {
   const user = useSelector((state) => state.auth.login?.currentUser);
-  const {teamId,memberId} = useParams();
-  const [nickname, setNickname] = useState( "");
+  const {teamId} = useParams();
+  const [nickname, setNickname] = useState("");
   const [number, setNumber] = useState();
   const [value, setValue] = React.useState("thành viên");
-
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setValue(event.target.value);
   };
   const dispatch = useDispatch();
 
-  const handleEdit = (e) => {
+  const handleCreate = (e) => {
     e.preventDefault();
     const memberInfo = {
       nickname: nickname,
       number: number,
       role: value,
+      isExistUser: false, 
     };
-    editMemberInfo(memberInfo, navigate,dispatch, teamId,memberId, user?.token);
+    createMember(memberInfo,navigate ,dispatch, teamId, user?.token);
   };
-  console.log(teamId,' and' , memberId)
+
   return (
     <div className="updateWrapper">
       <div className="updateContainer">
-        <div className="heading">Your member</div>
+        <div className="heading">Create your member</div>
         <form>
           <div className="card">
             <div className="formAvatar">
@@ -99,9 +99,9 @@ const EditMember = () => {
             <button
               // disabled={teamEdit}
               className="updateButton"
-              onClick={handleEdit}
+              onClick={handleCreate}
             >
-              Update
+              Create
             </button>
           </div>
         </form>
@@ -110,4 +110,4 @@ const EditMember = () => {
   );
 };
 
-export default EditMember;
+export default CreateMember;

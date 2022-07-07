@@ -130,7 +130,7 @@ export const editTeamInfo = async (teamInfo, dispatch, teamId, token) => {
   }
 };
 
-export const createMember = async (memberInfo, dispatch, teamId, token) => {
+export const createMember = async (memberInfo, navigate,dispatch, teamId, token) => {
   dispatch(createMemberStart());
   try {
     const res = await axios.post(`/team/create-member/${teamId}`, memberInfo, {
@@ -139,6 +139,7 @@ export const createMember = async (memberInfo, dispatch, teamId, token) => {
     console.log(res);
     dispatch(createMemberSuccess(res.config.data));
     dispatch(createMemberMessage(res.data));
+    navigate(`/team-info/${teamId}`);
   } catch (error) {
     dispatch(createMemberFailed());
   }
@@ -156,7 +157,7 @@ export const viewMember = async (dispatch, memberId) => {
   }
 };
 
-export const editMemberInfo = async (memberInfo, dispatch, teamId,memberId, token) => {
+export const editMemberInfo = async (memberInfo,navigate ,dispatch, teamId,memberId, token) => {
   dispatch(updateMemberStart());
   try {
     const res = await axios.put(`/team/update-member/${teamId}/${memberId}`, memberInfo, {
@@ -165,6 +166,7 @@ export const editMemberInfo = async (memberInfo, dispatch, teamId,memberId, toke
     console.log(res);
     dispatch(updateMemberSuccess(res.config.data));
     dispatch(updateMemberMessage(res.data));
+    navigate(`/team-info/${teamId}`)
   } catch (error) {
     dispatch(updateMemberFailed());
   }

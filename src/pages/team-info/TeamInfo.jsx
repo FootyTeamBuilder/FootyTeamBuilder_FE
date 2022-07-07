@@ -18,9 +18,7 @@ const TeamInfo = () => {
     const [teamInfo, setTeamInfo] = useState();
     const [openMatching, setOpenMatching] = useState(false);
 
-    const handleCreateNewMember = (member) => {
-        createMember()
-    };
+  
     const getTeamInfo = async () => {
         const response = await axios.get(`/team/view-team/${teamId}`);
         setTeamInfo(response.data);
@@ -57,9 +55,10 @@ const TeamInfo = () => {
                 <div className="members-grid">
                     <MemberItem 
                         avatar='blank-avatar.jpg'
-                        name={teamInfo.captain.name}
+                        name={teamInfo.captainUser.name}
                         role='Đội trưởng'
                         number=''
+                        onClick={(e) => navigate(`/member-info/${teamInfo.captain._id}`)}
                     />
                    
                     {
@@ -71,12 +70,14 @@ const TeamInfo = () => {
                                 role={t.member.role}
                                 nickname={t.member.nickname}
                                 number={t.member.number}
-                                onClick={(e) => navigate(`/member-info/${t.member._id}`)}
+                                teamId={t.member.teamId}
+                                memberId={t.member._id}
+                                
                             />
                         })
                     }
                      <IconButton aria-label="edit">
-                      <AddCircleIcon onClick={(e) => handleCreateNewMember} />
+                      <AddCircleIcon onClick={(e) => navigate(`/create-member/${teamId}`)} />
                      </IconButton>
                 </div>
             </div>

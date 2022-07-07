@@ -1,7 +1,6 @@
 import './Header.css'
 import { Link, useNavigate, NavLink } from 'react-router-dom'
-import Button from '../common/button/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import goalImg from '../../assets/goal.png';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
@@ -11,6 +10,10 @@ import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/apiRequest';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import moment from 'moment';
+import NotiItem from '../NotiItem/NotiItem';
 
 const LoginHeader = () => {
 
@@ -19,10 +22,24 @@ const LoginHeader = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpenProfileDropdown, setIsOpenProfileDropdown] = useState(false);
     const [isOpenNoti, setIsOpenNoti] = useState(false);
+    const [notiList, setNotiList] = useState([]);
+    const user = useSelector((state) => state.auth.login?.currentUser);
 
     window.onscroll = () => {
         setIsScrolled(window.pageYOffset <= 0 ? false : true);
     };
+
+    const getNotiList = async (token) => {
+        const res = await axios.get('/user/notification-list', {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        setNotiList(res.data.data);
+    }
+
+    // lay cac thong bao khi load header
+    useEffect(() => {
+        getNotiList(user?.token);
+    }, []);
 
     return (
         <div className={isScrolled ? 'header is-scrolled' : 'header'}>
@@ -47,22 +64,13 @@ const LoginHeader = () => {
                         } 
                     />
                     <div className={isOpenNoti? 'noti is-opened' : 'noti'}>
-
-                        {/* se sua thanh map */}
-                        <div className="noti-item">
-                            <img src={require('../../assets/pep.jpg')} alt="" />
-                            <div>
-                                <p>Content</p>
-                                <span>1 Ngày trước</span>
-                            </div>
-                        </div>
-                        <div className="noti-item">
-                            <img src={require('../../assets/pep.jpg')} alt="" />
-                            <div>
-                                <p>Content</p>
-                                <span>1 Ngày trước</span>
-                            </div>
-                        </div>
+        
+                        {
+                            notiList.length === 0 ? <div className='noti-item'>Bạn không có thông báo</div> :
+                            notiList.map(n => {
+                                return <NotiItem key={n._id} notiItem={n} />
+                            })
+                        }
 
                     </div>
                 </div>
@@ -82,9 +90,6 @@ const LoginHeader = () => {
                         </Link>
                         <Link to='all-my-team'>
                             <GroupIcon /> Hồ sơ đội bóng
-                        </Link>
-                        <Link to='/update-match'>
-                            <SportsSoccerIcon /> Trận đấu của tôi
                         </Link>
                         <Link to='/team-history'>
                             <LibraryBooksIcon /> Lịch sử đấu

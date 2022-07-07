@@ -49,7 +49,7 @@
     position: absolute;
     left: -9px;
     top: 20px;
-    background: #63A44C;
+    background: var(--ribbon-color);
     color: white;
 }
 .member-item .ribbon3:before, .ribbon3:after {
@@ -61,7 +61,7 @@
     width: 0;
     top: -8.5px;
     left: 0.1px;
-    border-bottom: 9px solid green;
+    border-bottom: 9px solid var(--inside-ribbon);
     border-left: 9px solid transparent;
 }
 .member-item .ribbon3:after {
@@ -70,5 +70,5 @@
     right: -14.5px;
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent;
-    border-left: 15px solid #63A44C;
+    border-left: 15px solid var(--ribbon-color);
 }

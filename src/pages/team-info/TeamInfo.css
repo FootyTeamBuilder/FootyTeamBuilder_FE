@@ -59,16 +59,34 @@
     color: black;
     border: none;
     font-size: 1.3rem;
-    padding: 1rem 3rem 1rem 3rem;
+    padding: 1rem 0 1rem 0;
+    width: 10rem;
     border: 1px solid black;
 }
 .team-info .team-info-detail .right .matching-btn:hover {
     box-shadow: 0 0 0 4px #FFF3E0, 0 0 0 6px black;
 }
 
+.team-info .team-info-detail .right .join-team-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 15rem;
+    right: 9vw;
+    width: 10rem;
+    background-color: #FFFCF7;
+    color: black;
+    border: none;
+    font-size: 1.3rem;
+    padding: 1rem 0 1rem 0;
+    border: 1px solid black;
+}
+.team-info .team-info-detail .right .join-team-btn:hover {
+    box-shadow: 0 0 0 4px #FFF3E0, 0 0 0 6px black;
+}
+
 
 /* pop up */
-.matching-form {
+.matching-form, .team-info .join-team-confirm {
     position: fixed;
     top: 0;
     left: 0;
@@ -78,12 +96,13 @@
     justify-content: center;
     align-items: center;
 }
-.matching-form .background {
+.matching-form .background, .team-info .join-team-confirm .background {
     position: absolute;
     top: 0;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.202);
+    cursor: pointer;
 }
 .matching-form .content {
     position: relative;
@@ -136,4 +155,63 @@
     background-color: #FFFCF7;
     border: 1px solid black;
     cursor: pointer;
+}
+
+.team-info .join-team-confirm .content {
+    position: relative;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(0.8);
+    width: 40rem;
+    height: 13rem;
+    background-color: #FFF3E0;
+    z-index: 2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.team-info .join-team-confirm .content h2 {
+    color: #63A44C;
+    margin-bottom: 2rem;
+}
+.team-info .join-team-confirm .content .confirm {
+    cursor: pointer;
+    border: none;
+    background-color: #63A44C;
+    color: white;
+    font-size: 1rem;
+    height: 3rem;
+    width: 7rem;
+    margin-right: 2rem;
+}
+.team-info .join-team-confirm .content .confirm:hover {
+    background-color: #5b9546;
+}
+.team-info .join-team-confirm .content .cancel {
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: #FFF3E0;
+    font-size: 1rem;
+    height: 3rem;
+    width: 7rem;
+    color: black;
+}
+.team-info .join-team-confirm .content .cancel:hover {
+    background-color: #FFFCF7;
+}
+
+.team-info .navigate-bar {
+    background-color: #FFFCF7;
+    border: 1px solid #63A44C;
+    column-gap: 5vw;
+    display: flex;
+    padding: 1.5rem 0 1.5rem 8vw;
+}
+.team-info .navigate-bar a {
+    color: black;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.team-info .navigate-bar a:hover {
+    color: #63A44C;
 }

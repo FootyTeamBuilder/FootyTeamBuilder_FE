@@ -1,3 +1,4 @@
+import React from 'react';
 import './MemberItem.css';
 
 import IconButton from '@mui/material/IconButton';
@@ -8,8 +9,15 @@ import { useNavigate } from 'react-router-dom';
 const MemberItem = ({ avatar, name, role, nickname, number,onClick,teamId,memberId}) => {
     const navigate = useNavigate();
     return (
-        <div className="member-item" onClick={onClick}>
-            <span className="ribbon3">{role}</span>
+        <div className="member-item">
+            <span class="ribbon3" 
+                style={role === 'Đội trưởng'? 
+                    {'--ribbon-color': 'purple', '--inside-ribbon': '#440044'} : 
+                    {'--ribbon-color': '#63A44C', '--inside-ribbon': 'green'}
+                }
+            >
+                {role}
+            </span>
             <img src={require(`../../assets/${avatar}`)} className='avatar' alt="" />
             <div className="name">{name}</div>
             <div className="nickname"><span>Biệt danh:</span> {nickname}</div>
@@ -26,7 +34,7 @@ const MemberItem = ({ avatar, name, role, nickname, number,onClick,teamId,member
             </IconButton>
             </div>
         </div>
-    )
+    );
 }
 
 export default MemberItem

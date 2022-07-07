@@ -1,17 +1,23 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import {useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Spinner from '../../components/loading/Spinner';
 import MemberItem from '../../components/member-item/MemberItem';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import IconButton from '@mui/material/IconButton';
 import './TeamInfo.css';
+import { createMember } from '../../redux/apiRequest';
 
 const TeamInfo = () => {
-
+    const navigate = useNavigate();
     const {teamId} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [teamInfo, setTeamInfo] = useState();
 
+    const handleCreateNewMember = (member) => {
+        createMember()
+    };
     const getTeamInfo = async () => {
         const response = await axios.get(`/team/view-team/${teamId}`);
         setTeamInfo(response.data);
@@ -51,6 +57,7 @@ const TeamInfo = () => {
                         role='Đội trưởng'
                         number=''
                     />
+                   
                     {
                         teamInfo.members.map(t => {
                             return <MemberItem
@@ -60,9 +67,13 @@ const TeamInfo = () => {
                                 role={t.member.role}
                                 nickname={t.member.nickname}
                                 number={t.member.number}
+                                onClick={(e) => navigate(`/member-info/${t.member._id}`)}
                             />
                         })
                     }
+                     <IconButton aria-label="edit">
+                      <AddCircleIcon onClick={(e) => handleCreateNewMember} />
+                     </IconButton>
                 </div>
             </div>
         </div>

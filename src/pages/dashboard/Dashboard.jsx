@@ -20,7 +20,7 @@ const Dashboard = () => {
               bóng của bạn.
             </p>
             <Button
-              text="Đăng ký ngay"
+              text="Tao Doi Bong"
               height="3rem"
               width="10rem"
               fontSize="1rem"

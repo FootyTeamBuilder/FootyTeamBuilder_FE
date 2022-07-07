@@ -8,12 +8,15 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import IconButton from '@mui/material/IconButton';
 import './TeamInfo.css';
 import { createMember } from '../../redux/apiRequest';
+import '../../components/common/button/Button';
+import Button from '../../components/common/button/Button';
 
 const TeamInfo = () => {
     const navigate = useNavigate();
     const {teamId} = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [teamInfo, setTeamInfo] = useState();
+    const [openMatching, setOpenMatching] = useState(false);
 
     const handleCreateNewMember = (member) => {
         createMember()
@@ -46,6 +49,7 @@ const TeamInfo = () => {
                         <div className="grid-item"><span>Khu vực:</span> {teamInfo.team.area}</div>
                         <div className="grid-item"><span>Thời gian chơi bóng:</span> {teamInfo.team.time}</div>
                     </div>
+                    <button className='matching-btn' onClick={(e) => setOpenMatching(true)}>Bắt đối</button>
                 </div>
             </div>
             <div className="members">
@@ -76,6 +80,20 @@ const TeamInfo = () => {
                      </IconButton>
                 </div>
             </div>
+            {
+                openMatching &&
+                <div className='matching-form'>
+                    <div className="content">
+                        <button className='close' onClick={(e) => setOpenMatching(false)}>X</button>
+                        <div className='title'>Thư mời</div>
+                        <textarea placeholder='Lời mời' className='invite' rows='5' />
+                        <input type="text" placeholder='Địa điểm trận đấu' />
+                        <input type="datetime-local" />
+                        <button className='submit'>Gửi</button>
+                    </div>
+                    <div className="background" onClick={(e) => setOpenMatching(false)}></div>
+                </div>
+            }
         </div>
     )
 }

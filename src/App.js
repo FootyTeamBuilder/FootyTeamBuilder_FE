@@ -18,6 +18,7 @@ import TeamInfo from "./pages/team-info/TeamInfo";
 import MemberInfo from "./pages/MemberInfo/MemberInfo";
 import EditMember from "./pages/EditMember/EditMember";
 import AllMyTeam from "./pages/all-my-team/AllMyTeam";
+import TeamHistory from "./pages/team-history/TeamHistory";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/create" element={<CreateTeam />} />
           <Route path="/edit-team/:teamId" element={<EditTeam />} />
           <Route path="/edit-member" element={<EditMember />} />
+          <Route path="/team-history" element={<TeamHistory />} />
         </Routes>
         <Routes>
           <Route exact path='/' />

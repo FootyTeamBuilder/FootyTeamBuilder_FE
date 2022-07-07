@@ -4,7 +4,18 @@ const teamSlice = createSlice({
     initialState: {
         newTeam: {
             teamInfo: null,
-            messageTeam: null,
+            // {
+            //     name: '',
+            //     minAge: '',
+            //     maxAge: '',
+            //     level: 'vui vẻ',
+            //     description: '',
+            //     area: '',
+            //     kits: '',
+            //     logo: '',
+            //     time: '',
+            // },
+            messageTeam: '',
             pending: false,
             error: false
         },
@@ -45,8 +56,25 @@ const teamSlice = createSlice({
             state.editTeam.pendingEdit = false;
             state.editTeam.error = true;
         },
+        logoutTeam: (state) => {
+            state.newTeam.teamInfo = null;
+            // {
+            //     name: '',
+            //     minAge: '',
+            //     maxAge: '',
+            //     level: 'vui vẻ',
+            //     description: '',
+            //     area: '',
+            //     kits: '',
+            //     logo: '',
+            //     time: '',
+            // };
+            state.newTeam.messageTeam = '';
+            state.editTeam.messageTeam = null;
+        },
+
     },
 });
 
-export const { createStart, createSuccess, createMessage, createFailed,editStart, editSuccess, editMessage, editFailed } = teamSlice.actions;
+export const { logoutTeam ,createStart, createSuccess, createMessage, createFailed,editStart, editSuccess, editMessage, editFailed } = teamSlice.actions;
 export default teamSlice.reducer;

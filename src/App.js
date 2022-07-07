@@ -15,6 +15,9 @@ import UpdateInfor from "./pages/UpdateInfor/UpdateInfor";
 import CreateTeam from "./pages/CreateTeam/CreateTeam"
 import EditTeam from "./pages/EditTeam/EditTeam";
 import TeamInfo from "./pages/team-info/TeamInfo";
+import MemberInfo from "./pages/MemberInfo/MemberInfo";
+import EditMember from "./pages/EditMember/EditMember";
+import AllMyTeam from "./pages/all-my-team/AllMyTeam";
 
 function App() {
 
@@ -33,11 +36,14 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/all-team" element={<AllTeam />} />
+          <Route path="/all-my-team" element={<AllMyTeam />} />
           <Route path="/team-info/:teamId" element={<TeamInfo />} />
+          <Route path="/member-info/:memberId" element={<MemberInfo />} />
           <Route path="/update-match" element={<UpdateMatch />} />
           <Route path="/edit-information" element={<UpdateInfor/>} />
           <Route path="/create" element={<CreateTeam />} />
-          <Route path="/edit-team" element={<EditTeam />} />
+          <Route path="/edit-team/:teamId" element={<EditTeam />} />
+          <Route path="/edit-member" element={<EditMember />} />
         </Routes>
         <Routes>
           <Route exact path='/' />

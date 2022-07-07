@@ -199,3 +199,19 @@
 .team-info .join-team-confirm .content .cancel:hover {
     background-color: #FFFCF7;
 }
+
+.team-info .navigate-bar {
+    background-color: #FFFCF7;
+    border: 1px solid #63A44C;
+    column-gap: 5vw;
+    display: flex;
+    padding: 1.5rem 0 1.5rem 8vw;
+}
+.team-info .navigate-bar a {
+    color: black;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.team-info .navigate-bar a:hover {
+    color: #63A44C;
+}

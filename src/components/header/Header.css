@@ -33,22 +33,6 @@
     margin-left: 1rem;
 }
 
-.header a {
-    color: black;
-    display: flex;
-    align-items: center;
-    column-gap: 0.7rem;
-}
-.header a:hover {
-    color: #63A44C;
-}
-.header a.active {
-    color: #63A44C;
-}
-.header a.inactive {
-    /* color: black; */
-}
-
 .header .avatar {
     cursor: pointer;
     width: 3rem;
@@ -140,7 +124,7 @@
     margin-right: 1rem;
 }
 
-.header .noti .noti-item span {
+.header .noti .noti-item .time {
     color: #63A44C;
 }
 

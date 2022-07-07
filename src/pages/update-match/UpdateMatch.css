@@ -65,3 +65,64 @@
     font-size: 1.4rem;
 }
 
+.input-match {
+    background-color: #FFFCF7;
+    padding: 5rem 6vw 4rem 6vw;
+    column-gap: 15vw;
+    position: relative;
+}
+
+.input-match .input-div {
+    width: 22vw;
+    position: absolute;
+}
+.input-match .input-div.left {
+    top: 1rem;
+    left: 9vw;
+    z-index: 3;
+}
+.input-match .input-div.right {
+    right: 9vw;
+    top: 1rem;
+}
+
+.input-match .input-div h1 {
+    color: #63A44C;
+    text-align: center;
+}
+.input-match .input-div form {
+    border: 1px solid #63A44C;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 2.5rem;
+}
+.input-match .input-div input {
+    border: 1px solid black;
+    font-size: 1rem;
+    margin: 0.5rem 0 2rem 0;
+    padding: 5px;
+}
+.input-match .input-div select {
+    margin: 0.5rem 0 2rem 0;
+    border: 1px solid black;
+    font-size: 1rem;
+    padding: 5px;
+}
+.input-match .input-div button {
+    background-color: #63A44C;
+    border: none;
+    color: white;
+    cursor: pointer;
+    width: 7rem;
+    height: 3rem;
+    font-size: 1rem;
+    margin: auto;
+}
+.input-match .input-div button:hover {
+    background-color: #538a3f;
+}
+
+.input-match .score-div {
+    /* position: absolute; */
+}

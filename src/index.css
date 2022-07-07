@@ -7,6 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -14,4 +20,14 @@ code {
 
 a {
   text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  column-gap: 0.7rem;
+}
+a:hover {
+  color: #63A44C;
+}
+a.active {
+  color: #63A44C;
 }

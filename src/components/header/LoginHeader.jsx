@@ -12,6 +12,8 @@ import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import moment from 'moment';
+import NotiItem from '../NotiItem/NotiItem';
 
 const LoginHeader = () => {
 
@@ -62,19 +64,11 @@ const LoginHeader = () => {
                         } 
                     />
                     <div className={isOpenNoti? 'noti is-opened' : 'noti'}>
-
+        
                         {
                             notiList.length === 0 ? <div className='noti-item'>Bạn không có thông báo</div> :
                             notiList.map(n => {
-                                return <div className="noti-item" key={n._id}>
-                                    <img src={require('../../assets/pep.jpg')} alt="" />
-                                    <div>
-                                        <p>{n.content}</p>
-                                        <span>{n.createdAt}</span>
-                                        <button className='accept'>Chấp nhận</button>
-                                        <button className='reject'>Từ chối</button>
-                                    </div>
-                                </div>
+                                return <NotiItem key={n._id} notiItem={n} />
                             })
                         }
 
@@ -96,9 +90,6 @@ const LoginHeader = () => {
                         </Link>
                         <Link to='edit-team'>
                             <GroupIcon /> Hồ sơ đội bóng
-                        </Link>
-                        <Link to='/update-match'>
-                            <SportsSoccerIcon /> Trận đấu của tôi
                         </Link>
                         <Link to='/team-history'>
                             <LibraryBooksIcon /> Lịch sử đấu

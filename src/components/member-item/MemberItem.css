@@ -1,10 +1,10 @@
 .member-item {
     position: relative;
     width: 15rem;
-    height: 25rem;
+    height: 28rem;
     background-color: white;
     border: 0.5px solid #63A44C;
-    cursor: pointer;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,7 +35,9 @@
 .member-item .nickname {
     margin-bottom: 1rem;
 }
-
+.member-item .number {
+    margin-bottom: 1rem;
+}
 .member-item span {
     font-weight: 600;
 }
@@ -71,4 +73,12 @@
     border-top: 25px solid transparent;
     border-bottom: 25px solid transparent;
     border-left: 15px solid var(--ribbon-color);
+}
+.member-item .button {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    cursor: pointer;
 }

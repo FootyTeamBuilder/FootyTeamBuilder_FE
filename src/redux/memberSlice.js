@@ -21,9 +21,6 @@ const memberSlice = createSlice({
     createMemberMessage: (state, action) => {
       state.memberInfo.message = action.payload;
     },
-    createMemberLogout: (state) => {
-      state.memberInfo.Info = null;
-    },
     createMemberFailed: (state) => {
       state.memberInfo.pending = false;
       state.memberInfo.error = true;
@@ -46,10 +43,10 @@ const memberSlice = createSlice({
     deleteMemberStart: (state) => {
       state.memberInfo.pending = true;
     },
-    deleteMemberSuccess: (state, action) => {
+    deleteMemberSuccess: (state) => {
       state.memberInfo.pending = false;
       state.memberInfo.error = false;
-      state.memberInfo.Info = JSON.parse(action.payload);
+      state.memberInfo.Info = null;
     },
     deleteMemberMessage: (state, action) => {
       state.memberInfo.message = action.payload;

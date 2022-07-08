@@ -23,7 +23,6 @@ import {
   createMemberStart,
   createMemberSuccess,
   createMemberMessage,
-  createMemberLogout,
   createMemberFailed,
   updateMemberStart,
   updateMemberSuccess,
@@ -172,15 +171,16 @@ export const editMemberInfo = async (memberInfo,navigate ,dispatch, teamId,membe
   }
 };
 
-export const deleteMemberInfo = async (dispatch, teamId,memberId, token) => {
+export const deleteMemberInfo = async (dispatch,navigate ,teamId,memberId, token) => {
   dispatch(deleteMemberStart());
   try {
     const res = await axios.delete(`/team/delete-member/${teamId}/${memberId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log(res);
-    dispatch(deleteMemberSuccess(res.config.data));
+    dispatch(deleteMemberSuccess());
     dispatch(deleteMemberMessage(res.data));
+    navigate(`/team-info/${teamId}/member-list`)
   } catch (error) {
     dispatch(deleteMemberFailed());
   }

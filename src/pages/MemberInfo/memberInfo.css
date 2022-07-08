@@ -1,53 +1,37 @@
-.team-info h1 {
+
+.member-info h1 {
     margin: 0;
 }
 
-.team-info .team-info-detail {
+.member-info .member-info-detail {
+    height: 100vh;
     display: flex;
-    background-color: #FFF3E0;
+    background-color: #fff9f1;
     box-sizing: border-box;
     padding: 3rem;
     column-gap: 5vw;
 }
 
-.team-info .team-info-detail .avatar {
+.member-info .member-info-detail .avatar {
     width: 17rem;
+    height: 17rem;
     border-radius: 50%;
 }
 
-.team-info .team-info-detail .right h1 {
+.member-info .member-info-detail .right h1 {
     color: #63A44C;
     font-size: 3rem;
     margin-bottom: 2rem;
 }
 
-.team-info .team-info-detail .right .info-detail {
+.member-info .member-info-detail .right .info-detail {
     line-height: 1.8rem;
     font-weight: 500;
 }
 
-.team-info .team-info-detail .right span {
+.member-info .member-info-detail .right span {
     font-weight: bold;
     color: #63A44C;
 }
 
-.team-info .members {
-    background-color: #FFFCF7;
-    padding: 2rem 10vw 4rem 10vw;    ;
-}
-
-.team-info .members h1 {
-    margin-bottom: 3rem;
-    color: #63A44C;
-}
-
-.team-info .members .members-grid {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    row-gap: 7vh;
-    column-gap: 4vw;
-    justify-content: start;
-    box-sizing: border-box;
-}
-
-/* .team-info . */
+/* .member-info . */

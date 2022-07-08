@@ -17,9 +17,7 @@ const EditTeam = () => {
   const [minage, setMinage] = useState();
   const [maxage, setMaxage] = useState(); 
   const [area, setArea] = useState('');
-  const [kits, setKits] = useState('');
   const [logo, setLogo] = useState('');
-  const [time, setTime] = useState('');
   const [teamInfo, setTeamInfo] = useState();
   const dispatch = useDispatch();
   

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./editMember.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
@@ -9,19 +9,29 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 const EditMember = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.login?.currentUser);
-  const {teamId,memberId} = useParams();
-  const [nickname, setNickname] = useState( "");
+  const { teamId, memberId } = useParams();
+  const [nickname, setNickname] = useState("");
   const [number, setNumber] = useState();
   const [value, setValue] = React.useState("thành viên");
 
+  const dispatch = useDispatch();
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  const dispatch = useDispatch();
+  const getMemberInfo = async () => {
+    const response = await axios.get(`/team/view-member/${memberId}`);
+    setNickname(response.data.member.nickname);
+    setValue(response.data.member.role);
+    setNumber(response.data.member.number);
+  };
 
+  useEffect(() => {
+    getMemberInfo();
+  }, []);
   const handleEdit = (e) => {
     e.preventDefault();
     const memberInfo = {
@@ -29,9 +39,15 @@ const EditMember = () => {
       number: number,
       role: value,
     };
-    editMemberInfo(memberInfo, navigate,dispatch, teamId,memberId, user?.token);
+    editMemberInfo(
+      memberInfo,
+      navigate,
+      dispatch,
+      teamId,
+      memberId,
+      user?.token
+    );
   };
-  console.log(teamId,' and' , memberId)
   return (
     <div className="updateWrapper">
       <div className="updateContainer">

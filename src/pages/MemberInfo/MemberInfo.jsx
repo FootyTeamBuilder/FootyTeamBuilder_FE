@@ -14,7 +14,6 @@ const MemberInfo = () => {
 
     const getMemberInfo = async () => {
         const response = await axios.get(`/team/view-member/${memberId}`);
-        console.log(response)
         setMemberInfo(response.data);
         setIsLoading(false);
     }
@@ -24,47 +23,23 @@ const MemberInfo = () => {
     }, []);
 
     if(isLoading) return <Spinner />;
-    console.log(memberInfo)
 
 
     return (
-        <div className="team-info">
-            <div className="team-info-detail">
+        <div className="member-info">
+            <div className="member-info-detail">
                 <img src={require('../../assets/blank-avatar.jpg')} alt="" className='avatar' /> {/* thay bang logo */}
                 <div className="right">
-                    <h1>{'teamInfo.team.name'}</h1>
+                    <h1>{memberInfo.member.nickname}</h1>
                     <div className="info-detail">
-                        <div className='grid-item'><span>Giới thiệu:</span> {'teamInfo.team.description'}</div>
-                        <div className="grid-item"><span>Trình độ:</span> {'teamInfo.team.level'}</div>
-                        <div className="grid-item"><span>Độ tuổi:</span> {'teamInfo.team.age.minAge'} - {'teamInfo.team.age.maxAge'}</div>
+                        <div className='grid-item'><span>Nickname:</span> {memberInfo.member.nickname}</div>
+                        <div className="grid-item"><span>Role:</span> {memberInfo.member.role}</div>
+                        <div className="grid-item"><span>Number:</span>{memberInfo.member.number}</div>
                         <div className="grid-item"><span>Áo đấu:</span> {'teamInfo.team.kits'}</div>
                         <div className="grid-item"><span>Khu vực:</span> {'teamInfo.team.area'}</div>
                         <div className="grid-item"><span>Thời gian chơi bóng:</span> {'teamInfo.team.time'}</div>
                     </div>
                 </div>
-            </div>
-            <div className="members">
-                <h1>Danh sách thành viên</h1>
-                {/* <div className="members-grid">
-                    <MemberItem 
-                        avatar='blank-avatar.jpg'
-                        name={teamInfo.captain.name}
-                        role='Đội trưởng'
-                        number=''
-                    />
-                    {
-                        teamInfo.members.map(t => {
-                            return <MemberItem
-                                key={t.member._id}
-                                avatar='blank-avatar.jpg'
-                                name={t.info?.name}
-                                role={t.member.role}
-                                nickname={t.member.nickname}
-                                number={t.member.number}
-                            />
-                        })
-                    }
-                </div> */}
             </div>
         </div>
     )

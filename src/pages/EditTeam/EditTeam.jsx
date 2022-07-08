@@ -1,43 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./editTeam.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { editTeamInfo } from "../../redux/apiRequest";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 
 const EditTeam = () => {
   const user = useSelector((state)=> state.auth.login?.currentUser);
-  const team = useSelector((state)=> state.team.newTeam?.teamInfo);
-  const teamId = useSelector((state)=> state.team.newTeam?.messageTeam.id);
+  const {teamId} = useParams();
   const teamEdit = useSelector((state)=> state.team.editTeam?.pendingEdit);
-  const [name, setName] = useState(team.name?team.name:'');
-  const [description, setDescription] = useState(team.description?team.description:'');
-  const [level, setLevel] = useState(team.level?team.level:"vui vẻ");
-  const [minage, setMinage] = useState(team.minAge?team.minAge:null);
-  const [maxage, setMaxage] = useState(team.maxAge?team.maxAge:null); 
-  const [area, setArea] = useState(team.area?team.area:'');
-  const [kits, setKits] = useState(team.kits?team.kits:'');
-  const [logo, setLogo] = useState(team.logo?team.logo:'');
-  const [time, setTime] = useState(team.time?team.time:'');
-
+  const [name, setName] = useState();
+  const [description, setDescription] = useState('');
+  const [level, setLevel] = useState();
+  const [minage, setMinage] = useState();
+  const [maxage, setMaxage] = useState(); 
+  const [area, setArea] = useState('');
+  const [logo, setLogo] = useState('');
+  const [teamInfo, setTeamInfo] = useState();
   const dispatch = useDispatch();
   
+  const getTeamInfo = async () => {
+    const response = await axios.get(`/team/view-team/${teamId}`);
+    setTeamInfo(response.data);  
+    setName(response.data.team.name); 
+    setDescription(response.data.team.description);
+    setLevel(response.data.team.level);
+    setMinage(response.data.team.age.minAge);
+    setMaxage(response.data.team.age.maxAge);
+    setArea(response.data.team.area);
+}
+    useEffect(() => {
+    getTeamInfo();
+    }, []);
   const handleEdit = (e) => {
     e.preventDefault(); 
-    const teamInfo = {
+    const teamInfo1 = {
+      description : description,
       name : name,
       minAge : minage,
-      maxAge: maxage,
-      level: level,
-      description: description,
-      area: area,
-      kits: kits,
-      logo: logo,
-      time: time,
+      maxAge : maxage,
+      level : level,
+      area : area,
+      logo : logo,
     };
-    editTeamInfo(teamInfo,dispatch,teamId,user?.token);
+    editTeamInfo(teamInfo1,dispatch,teamId,user?.token);
   };
-
+  console.log(teamInfo);
   return (
     <div className="updateWrapper">
       <div className="updateContainer">
@@ -99,26 +109,6 @@ const EditTeam = () => {
                   type="text"
                   placeholder="Enter your area"
                   onChange={(e) => setArea(e.target.value)}
-                />
-              </div>
-              <div className="formItem">
-                <label className="labelInfor">Time</label>
-                <input
-                  className="formInput"
-                  value={time}
-                  type="datetime-local"
-                  placeholder="Enter your area"
-                  onChange={(e) => setTime(e.target.value)}
-                />
-              </div>
-              <div className="formItem">
-                <label className="labelInfor">Kits</label>
-                <input
-                  className="formInput"
-                  value={kits}
-                  type="checkbox"
-                  placeholder="Enter your kits"
-                  onChange={(e) => setKits(e.target.value)}
                 />
               </div>
               <div className="formItem">

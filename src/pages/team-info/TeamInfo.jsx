@@ -1,17 +1,16 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link, Route, Routes, useParams, NavLink } from "react-router-dom";
+import { Route,Routes, useParams, NavLink } from "react-router-dom";
 import Spinner from "../../components/loading/Spinner";
-import MemberItem from "../../components/member-item/MemberItem";
 import "./TeamInfo.css";
 import "../../components/common/button/Button";
-import Button from "../../components/common/button/Button";
 import { requestJoinTeam } from "../../redux/apiRequest";
 import { useSelector } from "react-redux";
 import MemberList from "../../components/team-info/member-list/MemberList";
 import TeamHistory from "../team-history/TeamHistory";
 import Comments from "../../components/team-info/Comments/Comments";
+
 
 const TeamInfo = () => {
     const { teamId } = useParams();
@@ -22,6 +21,7 @@ const TeamInfo = () => {
     const [myTeamList, setMyTeamList] = useState([]);
     const user = useSelector((state) => state.auth.login?.currentUser);
 
+  
     const getTeamInfo = async () => {
         const response = await axios.get(`/team/view-team/${teamId}`);
         setTeamInfo(response.data);

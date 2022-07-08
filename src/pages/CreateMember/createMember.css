@@ -1,0 +1,119 @@
+.updateWrapper {
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    padding: 10px;  
+ 
+  }
+.updateWrapper .updateContainer{
+  max-width: 800px;
+  width: 100%;
+  padding: 25px 30px;
+  border-radius: 25px;
+  background: linear-gradient(to left bottom, #6b6bd1, #6c77d7, #6f83dc, #748fe0, #7b9ae3, #73a7ec, #6db3f3, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);  
+
+}
+.updateWrapper .updateContainer .heading {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  text-align: center;
+  padding: 0 0 20px 0;
+  
+}
+.updateWrapper .updateContainer .heading::before{
+  content: '';
+  position: absolute;
+  height : 3px;
+  left : 0;
+  bottom: 0;
+  width: 100%;
+  background: pink;
+}
+.updateWrapper .updateContainer form .card {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+.updateWrapper .updateContainer form .card .formAvatar {
+  margin-top: 25px;
+}
+.updateWrapper .updateContainer form .card .card-details{
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+.updateWrapper form .card .card-details .formItem  {
+  width: calc(100% / 2 - 20px);
+  margin-bottom: 15px;
+}
+.updateWrapper .card-details .formItem .labelInfor {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+} 
+.updateWrapper .card-details .formItem .formInput {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.updateWrapper .card-details .formItem .formInput:focus,
+.updateWrapper .card-details .formItem .formInput:valid{
+  border-color: pink;
+}
+
+.updateWrapper .avatar{
+  width: 100%;
+  margin-top: 5px;
+}
+.updateWrapper form .buttonUpdate{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.updateWrapper form .buttonUpdate button{
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+  padding: 10px 0;
+  margin-top: 10px;
+  height: 100%;
+  width: 50%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: linear-gradient(to right top, #6b6bd1, #6c77d7, #6f83dc, #748fe0, #7b9ae3, #73a7ec, #6db3f3, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+.updateWrapper form .buttonUpdate button:after{
+  content: '';
+  background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: all 0.8s;
+}
+.updateWrapper form .buttonUpdate button:active:after{
+  padding: 0;
+  opacity: 1;
+  transition: 0s;
+}

@@ -65,15 +65,15 @@ const TeamInfo = () => {
                             {teamInfo.team.age.maxAge}
                         </div>
                         <div className="grid-item">
-                            <span>Áo đấu:</span> {teamInfo.team.kits}
-                        </div>
-                        <div className="grid-item">
                             <span>Khu vực:</span> {teamInfo.team.area}
+                        </div>
+                        {/* <div className="grid-item">
+                            <span>Áo đấu:</span> {teamInfo.team.kits}
                         </div>
                         <div className="grid-item">
                             <span>Thời gian chơi bóng:</span>{" "}
                             {teamInfo.team.time}
-                        </div>
+                        </div> */}
                     </div>
                     <button
                         className="matching-btn"

@@ -38,7 +38,9 @@ const MemberItem = ({ avatar, name, role, nickname, number,teamId,memberId}) => 
                 <PreviewIcon onClick={(e) => navigate(`/member-info/${memberId}`)}/>
             </IconButton>
             <IconButton aria-label="edit">
-                <EditIcon onClick={(e)=> navigate(`/edit-member/${teamId}/${memberId}`)}/>
+                <EditIcon onClick={(e)=> {navigate(`/edit-member/${teamId}/${memberId}`)
+                window.scrollTo(0,0)
+            }}/>
             </IconButton>
             <IconButton aria-label="delete">
                 <DeleteIcon onClick={(e)=> handleDeleteMember(teamId, memberId)}/>

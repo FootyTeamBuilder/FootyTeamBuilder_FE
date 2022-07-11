@@ -13,8 +13,9 @@ const MemberList = ({teamInfo}) => {
                     <MemberItem 
                         avatar='blank-avatar.jpg'
                         name={teamInfo.captainUser.name}
-                        role='Đội trưởng'
-                        number=''
+                        role={teamInfo.captain.role}
+                        nickname={teamInfo.captain.nickname}
+                        number={teamInfo.captain.number}
                         teamId={teamInfo.captain.teamId}
                         memberId={teamInfo.captain._id}
                     />
@@ -33,7 +34,9 @@ const MemberList = ({teamInfo}) => {
                         })
                     }
                     <IconButton aria-label='edit'>
-                        <AddCircleIcon onClick={(e)=> navigate(`/create-member/${teamId}`)} />
+                        <AddCircleIcon onClick={(e)=>{ navigate(`/create-member/${teamId}`)
+                        window.scrollTo(0,0)
+                    }} />
                     </IconButton>
                 </div>
             </div>

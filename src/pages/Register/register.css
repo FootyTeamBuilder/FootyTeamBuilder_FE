@@ -55,6 +55,7 @@
 
 .register-container .logo {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -66,7 +67,7 @@
 
 .register-container .logo h4 {
   font-size: 1.1rem;
-  margin-top: -9px;
+  margin-top: 13px;
   letter-spacing: -0.5px;
   color: #151111;
 }
@@ -162,6 +163,7 @@
 .register-container .text Link {
   color: #bbb;
   transition: 0.3s;
+  
 }
 
 .register-container .text Link :hover {
@@ -241,6 +243,7 @@
   line-height: 2.2rem;
   font-weight: 600;
   font-size: 1.6rem;
+  margin: 0;
 }
 
 .register-container .bullets {

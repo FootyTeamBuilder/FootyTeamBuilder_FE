@@ -140,6 +140,7 @@ const TeamInfo = () => {
                         </button>
                         <div className="title">Thư mời</div>
 
+                        <label htmlFor="">Chọn đội của bạn</label>
                         <select className="my-team-list">
                             {
                                 myTeamList.map(m => {

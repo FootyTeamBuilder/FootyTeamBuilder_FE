@@ -1,0 +1,71 @@
+.all-team {
+    
+}
+.empty-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 240px 0;
+    gap: 30px;
+}
+.empty-page h1 {
+    font-size: 50px;
+    background: -webkit-linear-gradient(#30CFD0, #330867);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.all-team .search-div {
+    background-color: #FFF3E0;
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.all-team .search-div .input-container {
+    position: relative;
+    border: 1px solid black;
+}
+.all-team .search-div .input-container input {
+    background-color: white;
+    width: 100%;
+    height: 3.5rem;
+    font-size: 1rem;
+    border: none;
+    padding-left: 3rem;
+}
+.all-team .search-div .input-container svg {
+    left: 1rem;
+    top: 1rem;
+    position: absolute;
+}
+
+.all-team .search-div .dropdown-container {
+    display: flex;
+    column-gap: 2vw;
+}
+
+.all-team .search-div .dropdown-container .MuiFormControl-root {
+    background-color: white;
+    width: 10rem;
+}
+.all-team .search-div .dropdown-container .MuiSelect-select {
+    border: 1px solid black;
+    border-radius: 0;
+}
+.all-team .search-div .dropdown-container .MuiInputLabel-root {
+    background-color: white;
+}
+
+.all-team .teams-div {
+    background-color: #FFFCF7;
+    box-sizing: border-box;
+    padding: 4rem 10vw 4rem 10vw;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 7vh;
+    column-gap: 4vw;
+    justify-content: start;
+}

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import MemberList from "../../components/team-info/member-list/MemberList";
 import TeamHistory from "../team-history/TeamHistory";
 import Comments from "../../components/team-info/Comments/Comments";
+import { toast } from "react-toastify";
 
 
 const TeamInfo = () => {
@@ -19,9 +20,11 @@ const TeamInfo = () => {
     const [openMatching, setOpenMatching] = useState(false);
     const [openJoinTeam, setOpenJoinTeam] = useState(false);
     const [myTeamList, setMyTeamList] = useState([]);
+    const [myTeamChosen, setMyTeamChosen] = useState();
+    const [area, setArea] = useState('');
+    const [time, setTime] = useState();
     const user = useSelector((state) => state.auth.login?.currentUser);
 
-  
     const getTeamInfo = async () => {
         const response = await axios.get(`/team/view-team/${teamId}`);
         setTeamInfo(response.data);
@@ -33,6 +36,20 @@ const TeamInfo = () => {
             headers: { Authorization: `Bearer ${user?.token}` }
         });
         setMyTeamList(response.data.teams);
+    }
+
+    const addOpponent = async (matchInfo) => {
+        try {
+            const response = await axios.put(`/team/add-opponent`, matchInfo, {
+                headers: { Authorization: `Bearer ${user?.token}` }
+            });
+
+            if(response.status === 201) {
+                toast.success('Đã gửi lời thách đấu');
+            }
+        } catch(error) {
+            toast.error('Không gửi được lời thách đấu');
+        }
     }
 
     useEffect(() => {
@@ -140,18 +157,32 @@ const TeamInfo = () => {
                         </button>
                         <div className="title">Thư mời</div>
 
-                        <label htmlFor="">Chọn đội của bạn</label>
-                        <select className="my-team-list">
+                        <select 
+                            className="my-team-list"
+                            defaultValue={null}
+                            onChange={(e) => setMyTeamChosen(e.target.value)}
+                        >
+                            <option value="" selected disabled hidden>Chọn đội của bạn</option>
                             {
                                 myTeamList.map(m => {
-                                    return <option key={m.team._id} value={m.team.name}>{m.team.name}</option>
+                                    return <option key={m.team._id} value={m.team._id}>{m.team.name}</option>
                                 })
                             }
                         </select>
 
-                        <input type="text" placeholder="Địa điểm trận đấu" />
-                        <input type="datetime-local" />
-                        <button className="submit">Gửi</button>
+                        <input type="text" placeholder="Địa điểm trận đấu" onChange={(e) => setArea(e.target.value)} />
+                        <input type="datetime-local" onChange={(e) => setTime(e.target.value)} />
+                        <button 
+                            className="submit"
+                            onClick={(e) => addOpponent({
+                                teamId: myTeamChosen,
+                                opponentId: teamId,
+                                area: area,
+                                time: time
+                            })}
+                        >
+                            Gửi
+                        </button>
                     </div>
                     <div
                         className="background"

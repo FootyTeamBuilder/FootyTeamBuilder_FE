@@ -8,11 +8,16 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import { useNavigate } from 'react-router-dom';
 import { deleteMemberInfo } from '../../redux/apiRequest';
 import { useDispatch, useSelector } from 'react-redux';
-const MemberItem = ({ avatar, name, role, nickname, number,teamId,memberId}) => {
+const MemberItem = ({ captainUserId,avatar, name, role, nickname, number,teamId,memberId}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.login?.currentUser);
-    
+    let isCaptain;
+    if (user?.id === captainUserId) {
+      isCaptain = true;
+    } else {
+      isCaptain = false;
+    }
     const handleDeleteMember = (teamId, memberId) => {
         const choice = window.confirm("Are you sure you want to delete this member?")
         if(!choice) return;
@@ -37,14 +42,25 @@ const MemberItem = ({ avatar, name, role, nickname, number,teamId,memberId}) => 
             <IconButton aria-label="preview">
                 <PreviewIcon onClick={(e) => navigate(`/member-info/${memberId}`)}/>
             </IconButton>
+            {isCaptain ? (
+          <>
             <IconButton aria-label="edit">
-                <EditIcon onClick={(e)=> {navigate(`/edit-member/${teamId}/${memberId}`)
-                window.scrollTo(0,0)
-            }}/>
+              <EditIcon
+                onClick={(e) => {
+                  navigate(`/edit-member/${teamId}/${memberId}`);
+                  window.scrollTo(0, 0);
+                }}
+              />
             </IconButton>
             <IconButton aria-label="delete">
-                <DeleteIcon onClick={(e)=> handleDeleteMember(teamId, memberId)}/>
+              <DeleteIcon
+                onClick={(e) => handleDeleteMember(teamId, memberId)}
+              />
             </IconButton>
+          </>
+        ) : (
+          <></>
+        )}
             </div>
         </div>
     );

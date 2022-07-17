@@ -1,16 +1,25 @@
 import { IconButton } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import React from 'react'
+import { useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom';
 import MemberItem from '../../member-item/MemberItem'
 
 const MemberList = ({teamInfo}) => {
     const navigate = useNavigate();
+    const user = useSelector((state)=> state.auth.login?.currentUser);
+    let isCaptain ;
+    if (user?.id === teamInfo.captain.userId){
+            isCaptain = true;
+    } else {
+        isCaptain = false;
+    }    
     const { teamId } = useParams();
     return (
         <div className="members">
             <div className="members-grid">
                     <MemberItem 
+                        captainUserId={teamInfo.captain.userId}
                         avatar='blank-avatar.jpg'
                         name={teamInfo.captainUser.name}
                         role={teamInfo.captain.role}
@@ -23,6 +32,7 @@ const MemberList = ({teamInfo}) => {
                         teamInfo.members.map(t => {
                             return <MemberItem
                                 key={t.member._id}
+                                captainUserId={teamInfo.captain.userId}
                                 avatar='blank-avatar.jpg'
                                 name={t.info?.name}
                                 role={t.member.role}
@@ -33,11 +43,15 @@ const MemberList = ({teamInfo}) => {
                             />
                         })
                     }
-                    <IconButton aria-label='edit'>
+                    { isCaptain ? (
+                        <IconButton aria-label='edit'>
                         <AddCircleIcon onClick={(e)=>{ navigate(`/create-member/${teamId}`)
                         window.scrollTo(0,0)
                     }} />
                     </IconButton>
+                    ):(
+                        <></>
+                    )}
                 </div>
             </div>
     

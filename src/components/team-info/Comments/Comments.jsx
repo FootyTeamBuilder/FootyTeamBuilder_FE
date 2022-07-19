@@ -34,7 +34,7 @@ const Comments = ({ teamInfo }) => {
 
 	useEffect(() => {
 		getListComments();
-	}, []);
+	}, [getListComments]);
 
 	return (
 		<div className="comments">

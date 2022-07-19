@@ -27,7 +27,7 @@ const MemberItem = ({ captainUserId,avatar, name, role, nickname, number,teamId,
     return (
         <div className="member-item">
             <span className="ribbon3" 
-                style={role === 'Đội trưởng'? 
+                style={role === 'đội trưởng'? 
                     {'--ribbon-color': 'purple', '--inside-ribbon': '#440044'} : 
                     {'--ribbon-color': '#63A44C', '--inside-ribbon': 'green'}
                 }

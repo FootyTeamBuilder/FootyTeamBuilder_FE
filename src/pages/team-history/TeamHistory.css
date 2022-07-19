@@ -102,3 +102,44 @@
 .team-history .matches .match-item .update-btn:hover {
     background-color: #FFFCF7;
 }
+
+.team-history .matches .match-item .status-div {
+    position: absolute;
+    left: 7rem;
+    bottom: 2rem;
+}
+.team-history .matches .match-item .status-div span {
+    font-weight: 600;
+}
+
+.team-history .help-btn {
+    position: fixed;
+    right: 3rem;
+    bottom: 7rem;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 1px 5px 9px rgba(0, 0, 0, 0.3);
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.team-history .help-div {
+    position: fixed;
+    right: 7rem;
+    bottom: 9rem;
+    background-color: white;
+    box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
+    border: 1px solid black;
+    padding: 2rem;
+    line-height: 1.5rem;
+    background-color: #FFFCF7;
+}
+
+.team-history .timeline-div {
+    border: 1px solid black;
+    border-top-color: transparent;
+    background-color: #FFF3E0;
+}

@@ -215,3 +215,14 @@
 .team-info .navigate-bar a:hover {
     color: #63A44C;
 }
+
+.team-info .matching-form select.my-team-list {
+    margin: 0.5rem 0 2rem 0;
+    border: 1px solid black;
+    font-size: 1rem;
+    width: 20rem;
+}
+
+.team-info .matching-form label {
+    font-weight: 600;
+}

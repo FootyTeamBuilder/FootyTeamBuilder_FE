@@ -6,7 +6,7 @@ import { updateInformation } from "../../redux/apiRequest";
 import UploadImage from "../../components/UploadImage/UploadImage";
 import axios from "axios";
 
-const BASEURL = "http://localhost:8080/user/edit-information";
+const BASEURL = "http://localhost:8080/user/image";
 
 const UpdateInfor = () => {
 	const user = useSelector((state) => state.auth.login?.currentUser);
@@ -17,7 +17,11 @@ const UpdateInfor = () => {
 	const [avatar, setAvatar] = useState(
 		currentInfo2 ? currentInfo2.avatar : "static/images/anh1.jpg"
 	);
-	console.log("currentInfo2 ", currentInfo2);
+
+	const [avatarUrl, setAvatarUrl] = useState(
+		currentInfo2 ? currentInfo2.avatar : "static/images/anh1.jpg"
+	);
+
 	const [name, setName] = useState(currentInfo2 ? currentInfo2.name : "");
 	const [email, setEmail] = useState(
 		currentInfo2 ? currentInfo2.email : currentInfo2.email
@@ -55,21 +59,23 @@ const UpdateInfor = () => {
 	const onFileChange = (e) => {
 		e.preventDefault();
 		if (e.target.files && e.target.files[0]) {
-			console.log(
-				"URL.createObjectURL(e.target.files[0]) ",
-				URL.createObjectURL(e.target.files[0])
-			);
 			setAvatar(URL.createObjectURL(e.target.files[0]));
+			setAvatarUrl(e.target.files[0]);
 		}
 	};
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 		const formData = new FormData();
-		formData.append("avatar", avatar);
-		axios.put(BASEURL, formData, {}).then((res) => {
-			console.log(res);
-		});
+		formData.append("avatar", avatarUrl);
+		formData.append("avatarName", avatarUrl.name);
+		axios
+			.post(BASEURL, formData, {
+				headers: { Authorization: `Bearer ${user?.token}` },
+			})
+			.then((res) => {
+				console.log(res);
+			});
 	};
 
 	return (
@@ -88,26 +94,6 @@ const UpdateInfor = () => {
 									src={avatar}
 									alt="avatar"
 								/>
-								<div className="container">
-									<div className="row">
-										<form onSubmit={onSubmit}>
-											<div className="form-group">
-												<input
-													type="file"
-													onChange={onFileChange}
-												/>
-											</div>
-											<div className="form-group">
-												<button
-													className="btn btn-primary"
-													type="submit"
-												>
-													Upload
-												</button>
-											</div>
-										</form>
-									</div>
-								</div>
 							</div>
 						</div>
 						<div className="card-details">
@@ -196,6 +182,20 @@ const UpdateInfor = () => {
 						</button>
 					</div>
 				</form>
+			</div>
+			<div className="container">
+				<div className="row">
+					<form onSubmit={onSubmit}>
+						<div className="form-group">
+							<input type="file" onChange={onFileChange} />
+						</div>
+						<div className="form-group">
+							<button className="btn btn-primary" type="submit">
+								Upload
+							</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	);

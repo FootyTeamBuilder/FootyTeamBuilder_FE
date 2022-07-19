@@ -1,16 +1,12 @@
 import './TeamHistory.css';
-import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
 const TeamHistory = () => {
+
+    const navigate = useNavigate();
+
     return (
         <div className="team-history">
-            <div className="search">
-                <h1>Lịch sử đấu đội của bạn</h1>
-                <div className="input-container">
-                    <input type="text" placeholder='Tìm kiếm' />
-                    <SearchIcon />
-                </div>
-            </div>
             <div className="matches"> {/* sua thanh map */}
                 <div className="match-item">
                     <div className="left" style={{backgroundColor: '#5dd469'}}>
@@ -31,6 +27,10 @@ const TeamHistory = () => {
                             <div className="area">Sân thông tin</div>
                         </div>
                     </div>
+                    <button 
+                        className='update-btn'
+                        onClick={(e) => navigate('/update-match')}
+                    >Cập nhật</button>
                 </div>
                 <div className="match-item">
                     <div className="left" style={{backgroundColor: '#e34f4f'}}>

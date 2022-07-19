@@ -9,10 +9,11 @@
     const user = useSelector((state)=> state.auth.login?.currentUser);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [area, setArea] = useState("");
     const [level, setLevel] = useState("vui vẻ");
     const [minage, setMinage] = useState();
     const [maxage, setMaxage] = useState();
-    const team = useSelector((state) => state.team);
+
     const dispatch = useDispatch();
     
     const handleCreate = (e) => {
@@ -23,6 +24,7 @@
         maxAge: maxage,
         level: level,
         description: description,
+        area : area,
       };
       createNewTeam(newTeam,dispatch,user?.token);
       console.log(user?.token)
@@ -57,6 +59,15 @@
                     type="text"
                     placeholder='Enter team description'
                     onChange={(e) => setDescription(e.target.value)}
+                  />
+                </div>
+                <div className="formItem">
+                  <label className="labelInfor">Area</label>
+                  <input
+                    className="formInput"
+                    type="text"
+                    placeholder='Enter team area'
+                    onChange={(e) => setArea(e.target.value)}
                   />
                 </div>
                 <div className="formItem">

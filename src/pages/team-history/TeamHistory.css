@@ -42,10 +42,12 @@
 .team-history .matches .match-item {
     border: 1px solid black;
     background-color: white;
-    width: 65vw;
+    width: 75vw;
     height: 14rem;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    position: relative;
 }
 .team-history .matches .match-item .left {
     color: white;
@@ -83,4 +85,20 @@
     text-align: center;
     line-height: 2rem;
     font-weight: 500;
+}
+
+.team-history .matches .match-item .update-btn {
+    border: 1px black solid;
+    background-color: #FFF3E0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem 2rem 1rem 2rem;
+    bottom: 1rem;
+    position: absolute;
+    right: 1rem;
+    color: black;
+}
+.team-history .matches .match-item .update-btn:hover {
+    background-color: #FFFCF7;
 }

@@ -20,6 +20,20 @@ import {
   updateFailed,
 } from "./userSlice";
 import {
+  createMemberStart,
+  createMemberSuccess,
+  createMemberMessage,
+  createMemberFailed,
+  updateMemberStart,
+  updateMemberSuccess,
+  updateMemberMessage,
+  updateMemberFailed,
+  deleteMemberStart,
+  deleteMemberSuccess,
+  deleteMemberMessage,
+  deleteMemberFailed,
+} from "./memberSlice";
+import {
   createStart,
   createSuccess,
   createMessage,
@@ -28,6 +42,7 @@ import {
   editSuccess,
   editMessage,
   editFailed,
+  logoutTeam,
 } from "./teamSlice";
 export const login = async (user, dispatch, navigate) => {
   dispatch(loginStart());
@@ -63,6 +78,7 @@ export const logOut = async (dispatch, navigate, id, accessToken, axiosJWT) => {
     localStorage.clear();
     dispatch(logOutSuccess());
     dispatch(updateLogout());
+    dispatch(logoutTeam())
     toast.success("Đăng xuất thành công");
     navigate("/login");
   } catch (err) {
@@ -88,8 +104,8 @@ export const updateInformation = async (userInfo, dispatch, token) => {
 export const createNewTeam = async (newTeam, dispatch, token) => {
   dispatch(createStart());
   try {
-    const res = await axios.put("/team/create", newTeam, {
-      headers: { Authorization: `Bearer ${token}` },
+    const res = await axios.put("/team/create", newTeam,{
+      headers: { Authorization: `Bearer ${token}` } ,
     });
     console.log(res);
     dispatch(createSuccess(res.config.data));
@@ -113,6 +129,73 @@ export const editTeamInfo = async (teamInfo, dispatch, teamId, token) => {
   }
 };
 
+export const createMember = async (memberInfo, navigate,dispatch, teamId, token) => {
+  dispatch(createMemberStart());
+  try {
+    const res = await axios.post(`/team/create-member/${teamId}`, memberInfo, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log(res);
+    dispatch(createMemberSuccess(res.config.data));
+    dispatch(createMemberMessage(res.data));
+    navigate(`/team-info/${teamId}`);
+  } catch (error) {
+    dispatch(createMemberFailed());
+  }
+};
+
+export const viewMember = async (dispatch, memberId) => {
+  dispatch(createMemberStart());
+  try {
+    const res = await axios.get(`/team/view-member/${memberId}`);
+    console.log(res);
+    dispatch(createMemberSuccess(res.config.data));
+    dispatch(createMemberMessage(res.data));
+  } catch (error) {
+    dispatch(createMemberFailed());
+  }
+};
+
+export const editMemberInfo = async (memberInfo,navigate ,dispatch, teamId,memberId, token) => {
+  dispatch(updateMemberStart());
+  try {
+    const res = await axios.put(`/team/update-member/${teamId}/${memberId}`, memberInfo, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log(res);
+    dispatch(updateMemberSuccess(res.config.data));
+    dispatch(updateMemberMessage(res.data));
+    navigate(`/team-info/${teamId}`)
+  } catch (error) {
+    dispatch(updateMemberFailed());
+  }
+};
+
+export const deleteMemberInfo = async (dispatch,navigate ,teamId,memberId, token) => {
+  dispatch(deleteMemberStart());
+  try {
+    const res = await axios.delete(`/team/delete-member/${teamId}/${memberId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    console.log(res);
+    dispatch(deleteMemberSuccess());
+    dispatch(deleteMemberMessage(res.data));
+    navigate(`/team-info/${teamId}/member-list`)
+  } catch (error) {
+    dispatch(deleteMemberFailed());
+  }
+};
+
+export const viewTeam = async (dispatch, teamId) => {
+  dispatch(createStart());
+  try {
+    const res = await axios.get(`/team/view-team/${teamId}`);
+    console.log(res);
+    dispatch(createSuccess(res.data.team));
+  } catch (error) {
+    dispatch(createFailed());
+  }
+};
 export const requestJoinTeam = async (teamId, token) => {
   try {
     const response = await axios.put(`/user/request-to-join/${teamId}`, {},

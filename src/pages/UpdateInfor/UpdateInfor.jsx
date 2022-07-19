@@ -75,6 +75,7 @@ const UpdateInfor = () => {
 			})
 			.then((res) => {
 				console.log(res);
+				setAvatar(res.data.data);
 			});
 	};
 

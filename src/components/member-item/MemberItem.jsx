@@ -27,7 +27,7 @@ const MemberItem = ({ captainUserId,avatar, name, role, nickname, number,teamId,
     return (
         <div className="member-item">
             <span className="ribbon3" 
-                style={role === 'Đội trưởng'? 
+                style={role === 'đội trưởng'? 
                     {'--ribbon-color': 'purple', '--inside-ribbon': '#440044'} : 
                     {'--ribbon-color': '#63A44C', '--inside-ribbon': 'green'}
                 }
@@ -39,22 +39,22 @@ const MemberItem = ({ captainUserId,avatar, name, role, nickname, number,teamId,
             <div className="nickname"><span>Biệt danh:</span> {nickname}</div>
             <div className="number"><span>Số áo:</span> {number}</div>
             <div className="button">
-            <IconButton aria-label="preview">
-                <PreviewIcon onClick={(e) => navigate(`/member-info/${memberId}`)}/>
+            <IconButton aria-label="preview" onClick={(e) => navigate(`/member-info/${memberId}`)}>
+                <PreviewIcon />
             </IconButton>
             {isCaptain ? (
           <>
-            <IconButton aria-label="edit">
-              <EditIcon
-                onClick={(e) => {
+            <IconButton aria-label="edit" onClick={(e) => {
                   navigate(`/edit-member/${teamId}/${memberId}`);
                   window.scrollTo(0, 0);
-                }}
+                }}>
+              <EditIcon
+                
               />
             </IconButton>
-            <IconButton aria-label="delete">
+            <IconButton aria-label="delete" onClick={(e) => handleDeleteMember(teamId, memberId)}>
               <DeleteIcon
-                onClick={(e) => handleDeleteMember(teamId, memberId)}
+                
               />
             </IconButton>
           </>

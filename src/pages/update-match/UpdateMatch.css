@@ -18,6 +18,11 @@
     font-weight: 600;
 }
 
+.update-match h1{
+    color: white;
+    text-align: center;
+}
+
 .update-match img {
     width: 12rem;
     height: 12rem;
@@ -48,7 +53,7 @@
 }
 
 .update-match .info .time {
-    font-size: 2.5rem;
+    font-size: 1.2rem;
 }
 
 .update-match .info .location {
@@ -77,18 +82,13 @@
     position: absolute;
 }
 .input-match .input-div.left {
-    top: 1rem;
-    left: 9vw;
+    top: 4rem;
+    left: 6vw;
     z-index: 3;
 }
 .input-match .input-div.right {
-    right: 9vw;
-    top: 1rem;
-}
-
-.input-match .input-div h1 {
-    color: #63A44C;
-    text-align: center;
+    right: 6vw;
+    top: 4rem;
 }
 .input-match .input-div form {
     border: 1px solid #63A44C;
@@ -124,5 +124,5 @@
 }
 
 .input-match .score-div {
-    /* position: absolute; */
+    min-height: 18rem;
 }

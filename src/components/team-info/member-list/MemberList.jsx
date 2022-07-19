@@ -44,11 +44,11 @@ const MemberList = ({teamInfo}) => {
                         })
                     }
                     { isCaptain ? (
-                        <IconButton aria-label='edit'>
-                        <AddCircleIcon onClick={(e)=>{ navigate(`/create-member/${teamId}`)
+                        <IconButton aria-label='edit' onClick={(e)=>{ navigate(`/create-member/${teamId}`)
                         window.scrollTo(0,0)
-                    }} />
-                    </IconButton>
+                    }}>
+                            <AddCircleIcon  />
+                        </IconButton>
                     ):(
                         <></>
                     )}

@@ -52,7 +52,6 @@ const LoginHeader = () => {
             <div className="header-child right">
                 <NavLink to='/' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Trang chủ</NavLink>
                 <NavLink to='/all-team' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Đội bóng</NavLink>
-                <NavLink to='/league' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Giải đấu</NavLink>
                 <NavLink to='/contact' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>Liên hệ</NavLink>
                 <div style={{position: 'relative'}}>
                     <NotificationsNoneIcon sx={{color: '#63A44C', fontSize: '2rem', cursor: 'pointer'}} 
@@ -90,9 +89,6 @@ const LoginHeader = () => {
                         </Link>
                         <Link to='all-my-team'>
                             <GroupIcon /> Hồ sơ đội bóng
-                        </Link>
-                        <Link to='/team-history'>
-                            <LibraryBooksIcon /> Lịch sử đấu
                         </Link>
                         <Link to='/login' onClick={(e) => logOut(dispatch,navigate)}>
                             <LogoutIcon /> Đăng xuất

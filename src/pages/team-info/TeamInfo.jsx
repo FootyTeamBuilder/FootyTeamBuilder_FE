@@ -16,6 +16,9 @@ import { toast } from "react-toastify";
 const TeamInfo = () => {
     const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
+    const [isCaptain, setIsCaptain] = useState(Boolean);
+    const [isMember, setIsMember] = useState(Boolean);
+    const [isCaptainOfOtherTeam, setIsCaptainOfOtherTeam] = useState(Boolean);
     const [teamInfo, setTeamInfo] = useState();
     const [openMatching, setOpenMatching] = useState(false);
     const [openJoinTeam, setOpenJoinTeam] = useState(false);
@@ -30,6 +33,21 @@ const TeamInfo = () => {
         setTeamInfo(response.data);
         setIsLoading(false);
     };
+    console.log(isMember,isCaptain);
+
+    //kiem tra user la doi truong cua team dang xem hay khong
+    const checkIsCaptain = async (teamId) => {
+        const response = await axios.get(`/team/is-captain/${teamId}`, {
+            headers: { Authorization: `Bearer ${user?.token}` },
+        });
+        setIsCaptain(response.data.isCaptain);
+    };
+
+    //kiem tra user co la thanh vien khong
+    const checkIsMember = (teamInfo) => {
+        if(isCaptain || teamInfo.filter(t => t.info._id === user.id).length > 0) setIsMember(true);
+        else setIsMember(false);
+    }
 
     const getMyTeamList = async () => {
         const response = await axios.get(`/user/user-team-list/${user?.id}/true`, {
@@ -55,6 +73,7 @@ const TeamInfo = () => {
     useEffect(() => {
         getTeamInfo();
         getMyTeamList();
+        checkIsCaptain(teamId);
     }, []);
 
     if (isLoading) return <Spinner />;
@@ -92,18 +111,24 @@ const TeamInfo = () => {
                             {teamInfo.team.time}
                         </div> */}
                     </div>
-                    <button
-                        className="matching-btn"
-                        onClick={(e) => setOpenMatching(true)}
-                    >
-                        Bắt đối
-                    </button>
-                    <button
-                        className="join-team-btn"
-                        onClick={(e) => setOpenJoinTeam(true)}
-                    >
-                        Tham gia đội
-                    </button>
+                    {
+                        !isCaptain &&
+                        <button
+                            className="matching-btn"
+                            onClick={(e) => setOpenMatching(true)}
+                        >
+                            Bắt đối
+                        </button>
+                    }
+                    {
+                        !isCaptain &&
+                        <button
+                            className="join-team-btn"
+                            onClick={(e) => setOpenJoinTeam(true)}
+                        >
+                            Tham gia đội
+                        </button>
+                    }
                 </div>
             </div>
             <div className="navigate-bar">

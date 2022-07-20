@@ -22,7 +22,9 @@ const LoginHeader = () => {
 	const [isOpenProfileDropdown, setIsOpenProfileDropdown] = useState(false);
 	const [isOpenNoti, setIsOpenNoti] = useState(false);
 	const [notiList, setNotiList] = useState([]);
+	
 	const user = useSelector((state) => state.user.userInfo.currentInfo);
+	const user1 = useSelector((state) => state.auth.login?.currentUser);
 	// console.log("user.data.avatar ", user);
 	const [avatar, setAvatar] = useState(
 		user ? user.avatar : "static/images/anh1.jpg"
@@ -45,7 +47,7 @@ const LoginHeader = () => {
 
 	// lay cac thong bao khi load header
 	useEffect(() => {
-		getNotiList(user?.token);
+		getNotiList(user1?.token);
 	}, []);
 
 

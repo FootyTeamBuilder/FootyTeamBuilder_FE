@@ -20,14 +20,13 @@ const MemberInfo = () => {
   useEffect(() => {
     getMemberInfo();
   }, []);
-
   if (isLoading) return <Spinner />;
 
   return (
     <div className="member-info">
       <div className="member-info-detail">
         <img
-          src={require("../../assets/blank-avatar.jpg")}
+          src={memberInfo.info.avatar? memberInfo.info.avatar : require("../../assets/blank-avatar.jpg")}
           alt=""
           className="avatar"
         />{" "}

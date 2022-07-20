@@ -40,7 +40,7 @@ const AllMyTeam = () => {
     <div className="empty-page">
       <h1>You need to create your team</h1>
       <img src="static/images/anh3.jpg"></img>
-      <Button variant="contained" sx={{padding: '10px'}} onClick={(e)=> navigate('/create')}>Đăng ký ngay</Button>
+      <Button variant="contained" sx={{padding: '10px'}} onClick={(e)=> navigate('/create')}>Tao Doi Bong</Button>
     </div>
   ) : (
     <div className="all-team">

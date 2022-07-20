@@ -3,7 +3,6 @@ import "./updateInfor.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { updateInformation } from "../../redux/apiRequest";
-import UploadImage from "../../components/UploadImage/UploadImage";
 import axios from "axios";
 
 const BASEURL = "http://localhost:8080/user/image";

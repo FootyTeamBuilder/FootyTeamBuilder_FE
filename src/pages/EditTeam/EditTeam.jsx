@@ -10,6 +10,11 @@ const EditTeam = () => {
 	const user = useSelector((state) => state.auth.login?.currentUser);
 	const { teamId } = useParams();
 	const teamEdit = useSelector((state) => state.team.editTeam?.pendingEdit);
+	const team = useSelector((state) => state.team.newTeam?.teamInfo);
+
+	console.log("team ", team);
+	// const logo = team.team ? team.team.logo : "";
+
 	const [name, setName] = useState();
 	const [description, setDescription] = useState("");
 	const [level, setLevel] = useState();
@@ -20,6 +25,12 @@ const EditTeam = () => {
 	const [teamInfo, setTeamInfo] = useState();
 	const dispatch = useDispatch();
 
+	// useEffect(() => {
+	// 	if (team.team.logo) {
+	// 		setLogo(team.);
+	// 	}
+	// }, []);
+
 	const getTeamInfo = async () => {
 		const response = await axios.get(`/team/view-team/${teamId}`);
 		setTeamInfo(response.data);
@@ -27,6 +38,9 @@ const EditTeam = () => {
 		setDescription(response.data.team.description);
 		setLevel(response.data.team.level);
 		setMinage(response.data.team.age.minAge);
+		if (response.data.team.logo) {
+			setLogo(response.data.team.logo);
+		}
 		setMaxage(response.data.team.age.maxAge);
 		setArea(response.data.team.area);
 	};
@@ -82,7 +96,7 @@ const EditTeam = () => {
 							<div className="profilePic">
 								<img
 									className="avatar"
-									src="static/images/anh1.jpg"
+									src={logo}
 									alt="avatar"
 								/>
 							</div>

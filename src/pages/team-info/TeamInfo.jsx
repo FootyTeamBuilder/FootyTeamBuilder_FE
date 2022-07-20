@@ -58,12 +58,12 @@ const TeamInfo = () => {
     }, []);
 
     if (isLoading) return <Spinner />;
-
+    console.log(teamInfo)
     return (
         <div className="team-info">
             <div className="team-info-detail">
                 <img
-                    src={require("../../assets/blank-avatar.jpg")}
+                    src={teamInfo.team.logo}
                     alt=""
                     className="avatar"
                 />{" "}

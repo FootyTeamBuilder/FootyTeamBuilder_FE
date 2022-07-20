@@ -45,16 +45,7 @@ const CreateMember = () => {
         <div className="heading">Create your member</div>
         <form>
           <div className="card">
-            <div className="formAvatar">
-              <label className="labelInfor">Member Avatar</label>
-              <div className="profilePic">
-                <img
-                  className="avatar"
-                  src="static/images/anh1.jpg"
-                  alt="avatar"
-                />
-              </div>
-            </div>
+           
             <div className="card-details">
               <div className="formItem">
                 <label className="labelInfor">Nickname</label>

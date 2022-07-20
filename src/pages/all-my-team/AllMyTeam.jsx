@@ -19,6 +19,11 @@ const AllMyTeam = () => {
   const [teamList, setTeamList] = useState([]);
   const user = useSelector((state) => state.auth.login?.currentUser);
   const id = user?.id;
+  const [tp,setTp] = useState('false');
+
+  const handleChange = (e) => {
+    setTp(e.target.value);
+  };
 
   const getTeamList = async (params, params2) => {
     const response = await axios.get(
@@ -30,17 +35,17 @@ const AllMyTeam = () => {
   };
 
   useEffect(() => {
-    getTeamList(id, "true");
-  }, []);
+    getTeamList(id, tp);
+  }, [tp]);
 
-  console.log(teamList.length);
+  console.log(tp);
   if (isLoading) return <Spinner />;
 
   return teamList.length === 0 ? (
     <div className="empty-page">
       <h1>You need to create your team</h1>
       <img src="static/images/anh3.jpg"></img>
-      <Button variant="contained" sx={{padding: '10px'}} onClick={(e)=> navigate('/create')}>Tao Doi Bong</Button>
+      <Button variant="contained" sx={{padding: '10px'}} onClick={(e)=> navigate('/create')}>Tạo đội ngay</Button>
     </div>
   ) : (
     <div className="all-team">
@@ -55,25 +60,10 @@ const AllMyTeam = () => {
         </div>
         <div className="dropdown-container">
           <FormControl>
-            <InputLabel>Trình độ</InputLabel>
-            <Select label="Trình độ">
-              <MenuItem value="Mạnh">Mạnh</MenuItem>
-              <MenuItem value="Trung bình">Trung bình</MenuItem>
-              <MenuItem value="Yếu">Yếu</MenuItem>
-              <MenuItem value="Vui">Vui</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel>Địa điểm</InputLabel>
-            <Select label="Địa điểm">
-              <MenuItem value="Hà Nội">Hà Nội</MenuItem>
-            </Select>
-          </FormControl>
-          <FormControl>
-            <InputLabel>Giới tính</InputLabel>
-            <Select label="Giới tính">
-              <MenuItem value="Nam">Nam</MenuItem>
-              <MenuItem value="Nữ">Nữ</MenuItem>
+            <InputLabel>Type</InputLabel>
+            <Select label="Trình độ" value={tp} onChange={handleChange}>
+              <MenuItem value="false">All team</MenuItem>
+              <MenuItem value="true">Captain</MenuItem>
             </Select>
           </FormControl>
         </div>

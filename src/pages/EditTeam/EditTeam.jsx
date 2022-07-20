@@ -5,6 +5,8 @@ import { useState } from "react";
 import { editTeamInfo } from "../../redux/apiRequest";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+
 
 const EditTeam = () => {
 	const user = useSelector((state) => state.auth.login?.currentUser);
@@ -85,6 +87,32 @@ const EditTeam = () => {
 									src="static/images/anh1.jpg"
 									alt="avatar"
 								/>
+								<div className="container">
+                                    <div className="row">
+                                        <form onSubmit={onSubmit}>
+                                            <div className="form-group">
+                                                <div class="upload-btn-wrapper">
+                                                    <button class="btn">
+                                                        <CameraAltIcon /> Upload
+                                                        an image
+                                                    </button>
+                                                    <input
+                                                        type="file"
+                                                        onChange={onFileChange}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="form-group">
+                                                <button
+                                                    className="btn btn-primary"
+                                                    type="submit"
+                                                >
+                                                    Upload
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
 							</div>
 						</div>
 						<div className="card-details">
@@ -175,20 +203,6 @@ const EditTeam = () => {
 						</button>
 					</div>
 				</form>
-			</div>
-			<div className="container">
-				<div className="row">
-					<form onSubmit={onSubmit}>
-						<div className="form-group">
-							<input type="file" onChange={onFileChange} />
-						</div>
-						<div className="form-group">
-							<button className="btn btn-primary" type="submit">
-								Upload
-							</button>
-						</div>
-					</form>
-				</div>
 			</div>
 		</div>
 	);

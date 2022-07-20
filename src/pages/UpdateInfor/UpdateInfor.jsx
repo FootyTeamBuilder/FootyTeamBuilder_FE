@@ -91,6 +91,8 @@ const UpdateInfor = () => {
 							</label>
 							<div className="profilePic">
 								<img
+									width="300px"
+									height="300px"
 									className="avatar"
 									src={avatar}
 									alt="avatar"

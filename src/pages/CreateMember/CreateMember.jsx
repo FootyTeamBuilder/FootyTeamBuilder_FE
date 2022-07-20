@@ -13,11 +13,16 @@ const CreateMember = () => {
   const user = useSelector((state) => state.auth.login?.currentUser);
   const {teamId} = useParams();
   const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
   const [number, setNumber] = useState();
   const [value, setValue] = React.useState("thành viên");
+  const [check, setCheck] = useState(false);
   const navigate = useNavigate();
   const handleChange = (event) => {
     setValue(event.target.value);
+  };
+  const handleCheck = (e) => {
+    setCheck(e.target.value);
   };
   const dispatch = useDispatch();
 
@@ -27,10 +32,12 @@ const CreateMember = () => {
       nickname: nickname,
       number: number,
       role: value,
-      isExistUser: false, 
+      isExistUser: check, 
+      email :email,
     };
     createMember(memberInfo,navigate ,dispatch, teamId, user?.token);
   };
+  console.log(check)
 
   return (
     <div className="updateWrapper">
@@ -93,6 +100,42 @@ const CreateMember = () => {
                   </RadioGroup>
                 </FormControl>
               </div>
+              <div className="formItem">
+                <FormControl>
+                  <FormLabel>
+                    Exist Account
+                  </FormLabel>
+                  <RadioGroup
+                    value={check}
+                    onChange={handleCheck}
+                  >
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="YES"
+                    />
+                    <FormControlLabel
+                      value = {false}
+                      control={<Radio />}
+                      label="NO"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </div>
+              { !check ? (
+                <h4>Member doesn't have account</h4>
+              ):(
+                <div className="formItem">
+                  <label className="labelInfor">Email</label>
+                  <input
+                    value={email}
+                    className="formInput"
+                    type="text"
+                    placeholder="Enter your email member"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+              )}
             </div>
           </div>
           <div className="buttonUpdate">

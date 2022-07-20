@@ -17,8 +17,7 @@ const TeamInfo = () => {
     const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
     const [isCaptain, setIsCaptain] = useState(Boolean);
-    const [isMember, setIsMember] = useState(Boolean);
-    const [isCaptainOfOtherTeam, setIsCaptainOfOtherTeam] = useState(Boolean);
+    const [buttonVisible, setButtonVisible] = useState([]);
     const [teamInfo, setTeamInfo] = useState();
     const [openMatching, setOpenMatching] = useState(false);
     const [openJoinTeam, setOpenJoinTeam] = useState(false);
@@ -33,7 +32,6 @@ const TeamInfo = () => {
         setTeamInfo(response.data);
         setIsLoading(false);
     };
-    console.log(isMember,isCaptain);
 
     //kiem tra user la doi truong cua team dang xem hay khong
     const checkIsCaptain = async (teamId) => {
@@ -43,10 +41,27 @@ const TeamInfo = () => {
         setIsCaptain(response.data.isCaptain);
     };
 
+    console.log('teamInfo',teamInfo);
     //kiem tra user co la thanh vien khong
     const checkIsMember = (teamInfo) => {
-        if(isCaptain || teamInfo.filter(t => t.info._id === user.id).length > 0) setIsMember(true);
-        else setIsMember(false);
+        if(teamInfo.members.filter(t => t.info?._id === user.id).length > 0) return true;
+        else return false;
+    }
+
+    //kiem tra user co phai la doi truong cua 1 team nao khong
+    const checkIsCaptainOfOtherTeam = (myTeamList) => {
+        if(myTeamList.length > 0) return true;
+        else return false;
+    }
+
+    //check nut bat doi va nut xin vao doi co hien khong
+    const checkButtonVisibility = () => {
+        if(isCaptain) return [false, false];
+        else if(checkIsCaptainOfOtherTeam(myTeamList) && checkIsMember(teamInfo))   return [true, false];
+        else if(checkIsCaptainOfOtherTeam(myTeamList) && !checkIsMember(teamInfo))  return [true, true];
+        else if(checkIsMember(teamInfo)) return [false, false];
+        else if(!checkIsMember(teamInfo)) return [false, true];
+        return '23'
     }
 
     const getMyTeamList = async () => {
@@ -71,10 +86,18 @@ const TeamInfo = () => {
     }
 
     useEffect(() => {
+        console.log('after hello');
         getTeamInfo();
         getMyTeamList();
         checkIsCaptain(teamId);
-    }, []);
+        return () => {
+            console.log('hello');
+            // console.log(checkButtonVisibility());
+            setButtonVisible(checkButtonVisibility())
+            // checkButtonVisibility();
+        }
+    }, [getMyTeamList, getTeamInfo, checkIsCaptain, checkButtonVisibility, teamId]);
+    // console.log('mang',buttonVisible);
 
     if (isLoading) return <Spinner />;
 
@@ -112,7 +135,7 @@ const TeamInfo = () => {
                         </div> */}
                     </div>
                     {
-                        !isCaptain &&
+                        buttonVisible[0] &&
                         <button
                             className="matching-btn"
                             onClick={(e) => setOpenMatching(true)}
@@ -121,7 +144,7 @@ const TeamInfo = () => {
                         </button>
                     }
                     {
-                        !isCaptain &&
+                        buttonVisible[1] &&
                         <button
                             className="join-team-btn"
                             onClick={(e) => setOpenJoinTeam(true)}

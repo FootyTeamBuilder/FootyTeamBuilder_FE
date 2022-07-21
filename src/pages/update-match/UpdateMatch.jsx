@@ -71,7 +71,7 @@ const UpdateMatch = () => {
 		if (isCaptainTeam1) setScoreTeam1((s) => (s -= 1));
 		else setScoreTeam2((s) => (s -= 1));
 
-		console.log("xoa");
+		// console.log("xoa");
 	};
 
 	//tinh so ban thang

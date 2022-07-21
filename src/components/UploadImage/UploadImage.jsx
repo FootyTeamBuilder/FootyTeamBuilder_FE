@@ -8,7 +8,7 @@ const UploadImage = () => {
 
 	const onFileChange = (e) => {
 		e.preventDefault();
-		console.log("e.target.files[0] ", e.target.files[0]);
+		// console.log("e.target.files[0] ", e.target.files[0]);
 		setAvatar(e.target.files[0]);
 	};
 

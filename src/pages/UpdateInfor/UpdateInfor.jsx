@@ -161,7 +161,7 @@ const UpdateInfor = () => {
                       onChange={(e) => setPhonenumber(e.target.value)}
                     />
                   </div>
-                  <div className="formItem">
+                  {/* <div className="formItem">
                     <label className="labelInfor">Password</label>
                     <input
                       className="formInput"
@@ -171,7 +171,7 @@ const UpdateInfor = () => {
                       // onChange={(e) => setPassword(e.target.value)}
                       readOnly={true}
                     />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="buttonUpdate">

@@ -37,7 +37,7 @@ const CreateMember = () => {
     };
     createMember(memberInfo,navigate ,dispatch, teamId, user?.token);
   };
-  console.log(check)
+  // console.log(check)
 
   return (
     <div className="updateWrapper">

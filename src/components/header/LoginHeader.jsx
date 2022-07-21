@@ -8,11 +8,9 @@ import GroupIcon from '@mui/icons-material/Group';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/apiRequest';
-import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import moment from 'moment';
 import NotiItem from '../NotiItem/NotiItem';
 
 const LoginHeader = () => {
@@ -73,7 +71,7 @@ const LoginHeader = () => {
 
                     </div>
                 </div>
-                <div style={{position: 'relative'}}>
+                <div style={{position: 'relative'}} className='avatar-div'>
                     <img 
                         src={require('../../assets/blank-avatar.jpg')} 
                         alt='' 
@@ -94,6 +92,7 @@ const LoginHeader = () => {
                             <LogoutIcon /> Đăng xuất
                         </Link>
                     </div>
+                    <p className='username'>{user.data.name}</p>
                 </div>
             </div>
         </div>

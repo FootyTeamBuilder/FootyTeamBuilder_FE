@@ -11,6 +11,7 @@ import MemberList from "../../components/team-info/member-list/MemberList";
 import TeamHistory from "../team-history/TeamHistory";
 import Comments from "../../components/team-info/Comments/Comments";
 import { toast } from "react-toastify";
+import { useCallback } from "react";
 
 
 const TeamInfo = () => {
@@ -41,10 +42,9 @@ const TeamInfo = () => {
         setIsCaptain(response.data.isCaptain);
     };
 
-    console.log('teamInfo',teamInfo);
     //kiem tra user co la thanh vien khong
-    const checkIsMember = (teamInfo) => {
-        if(teamInfo.members.filter(t => t.info?._id === user.id).length > 0) return true;
+    const checkIsMember = () => {
+        if(teamInfo?.members.filter(t => t.info?._id === user.id).length > 0) return true;
         else return false;
     }
 
@@ -57,11 +57,16 @@ const TeamInfo = () => {
     //check nut bat doi va nut xin vao doi co hien khong
     const checkButtonVisibility = () => {
         if(isCaptain) return [false, false];
-        else if(checkIsCaptainOfOtherTeam(myTeamList) && checkIsMember(teamInfo))   return [true, false];
-        else if(checkIsCaptainOfOtherTeam(myTeamList) && !checkIsMember(teamInfo))  return [true, true];
-        else if(checkIsMember(teamInfo)) return [false, false];
-        else if(!checkIsMember(teamInfo)) return [false, true];
-        return '23'
+        else {
+            if(checkIsCaptainOfOtherTeam(myTeamList)){
+                if(checkIsMember(teamInfo)) return [true, false];
+                else return [true, true];
+            }
+            else {
+                if(checkIsMember(teamInfo)) return [false, false];
+                else return [false, true];
+            }
+        }
     }
 
     const getMyTeamList = async () => {
@@ -86,18 +91,16 @@ const TeamInfo = () => {
     }
 
     useEffect(() => {
-        console.log('after hello');
         getTeamInfo();
         getMyTeamList();
         checkIsCaptain(teamId);
-        return () => {
-            console.log('hello');
-            // console.log(checkButtonVisibility());
-            setButtonVisible(checkButtonVisibility())
-            // checkButtonVisibility();
-        }
-    }, [getMyTeamList, getTeamInfo, checkIsCaptain, checkButtonVisibility, teamId]);
-    // console.log('mang',buttonVisible);
+    }, []);
+
+    useEffect(() => {
+        setButtonVisible(checkButtonVisibility());
+    }, [isCaptain, myTeamList, teamInfo])
+
+    // console.log(isCaptain, checkIsCaptainOfOtherTeam(myTeamList), checkIsMember(teamInfo),buttonVisible);
 
     if (isLoading) return <Spinner />;
 

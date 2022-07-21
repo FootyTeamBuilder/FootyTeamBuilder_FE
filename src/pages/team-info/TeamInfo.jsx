@@ -11,11 +11,14 @@ import MemberList from "../../components/team-info/member-list/MemberList";
 import TeamHistory from "../team-history/TeamHistory";
 import Comments from "../../components/team-info/Comments/Comments";
 import { toast } from "react-toastify";
+import { useCallback } from "react";
 
 
 const TeamInfo = () => {
     const { teamId } = useParams();
     const [isLoading, setIsLoading] = useState(true);
+    const [isCaptain, setIsCaptain] = useState(Boolean);
+    const [buttonVisible, setButtonVisible] = useState([]);
     const [teamInfo, setTeamInfo] = useState();
     const [openMatching, setOpenMatching] = useState(false);
     const [openJoinTeam, setOpenJoinTeam] = useState(false);
@@ -30,6 +33,41 @@ const TeamInfo = () => {
         setTeamInfo(response.data);
         setIsLoading(false);
     };
+
+    //kiem tra user la doi truong cua team dang xem hay khong
+    const checkIsCaptain = async (teamId) => {
+        const response = await axios.get(`/team/is-captain/${teamId}`, {
+            headers: { Authorization: `Bearer ${user?.token}` },
+        });
+        setIsCaptain(response.data.isCaptain);
+    };
+
+    //kiem tra user co la thanh vien khong
+    const checkIsMember = () => {
+        if(teamInfo?.members.filter(t => t.info?._id === user.id).length > 0) return true;
+        else return false;
+    }
+
+    //kiem tra user co phai la doi truong cua 1 team nao khong
+    const checkIsCaptainOfOtherTeam = (myTeamList) => {
+        if(myTeamList.length > 0) return true;
+        else return false;
+    }
+
+    //check nut bat doi va nut xin vao doi co hien khong
+    const checkButtonVisibility = () => {
+        if(isCaptain) return [false, false];
+        else {
+            if(checkIsCaptainOfOtherTeam(myTeamList)){
+                if(checkIsMember(teamInfo)) return [true, false];
+                else return [true, true];
+            }
+            else {
+                if(checkIsMember(teamInfo)) return [false, false];
+                else return [false, true];
+            }
+        }
+    }
 
     const getMyTeamList = async () => {
         const response = await axios.get(`/user/user-team-list/${user?.id}/true`, {
@@ -55,7 +93,14 @@ const TeamInfo = () => {
     useEffect(() => {
         getTeamInfo();
         getMyTeamList();
+        checkIsCaptain(teamId);
     }, []);
+
+    useEffect(() => {
+        setButtonVisible(checkButtonVisibility());
+    }, [isCaptain, myTeamList, teamInfo])
+
+    // console.log(isCaptain, checkIsCaptainOfOtherTeam(myTeamList), checkIsMember(teamInfo),buttonVisible);
 
     if (isLoading) return <Spinner />;
 
@@ -92,18 +137,24 @@ const TeamInfo = () => {
                             {teamInfo.team.time}
                         </div> */}
                     </div>
-                    <button
-                        className="matching-btn"
-                        onClick={(e) => setOpenMatching(true)}
-                    >
-                        Bắt đối
-                    </button>
-                    <button
-                        className="join-team-btn"
-                        onClick={(e) => setOpenJoinTeam(true)}
-                    >
-                        Tham gia đội
-                    </button>
+                    {
+                        buttonVisible[0] &&
+                        <button
+                            className="matching-btn"
+                            onClick={(e) => setOpenMatching(true)}
+                        >
+                            Bắt đối
+                        </button>
+                    }
+                    {
+                        buttonVisible[1] &&
+                        <button
+                            className="join-team-btn"
+                            onClick={(e) => setOpenJoinTeam(true)}
+                        >
+                            Tham gia đội
+                        </button>
+                    }
                 </div>
             </div>
             <div className="navigate-bar">

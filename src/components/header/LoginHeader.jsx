@@ -48,7 +48,6 @@ const LoginHeader = () => {
 		getNotiList(user?.token);
 	}, []);
 
-
 	return (
 		<div className={isScrolled ? "header is-scrolled" : "header"}>
 			<div className="header-child">

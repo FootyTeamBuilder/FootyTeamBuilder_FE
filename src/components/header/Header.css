@@ -153,3 +153,12 @@
 .header .noti .noti-item button.reject:hover {
     background-color: #FFFCF7;
 }
+
+.header .header-child.right p.username {
+    font-weight: 600;
+}
+
+.header .header-child.right .avatar-div {
+    display: flex;
+    column-gap: 10px;
+}

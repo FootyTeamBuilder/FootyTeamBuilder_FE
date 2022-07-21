@@ -9,7 +9,7 @@
  
   }
 .updateWrapper .updateContainer{
-  max-width: 800px;
+  max-width: 870px;
   width: 100%;
   padding: 25px 30px;
   border-radius: 25px;
@@ -32,6 +32,12 @@
   bottom: 0;
   width: 100%;
   background: pink;
+}
+.updateWrapper .updateContainer .contain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap : 20px;
 }
 .updateWrapper .updateContainer form .card {
   display: flex;
@@ -69,6 +75,7 @@
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
+
 .updateWrapper .card-details .formItem .formInput:focus,
 .updateWrapper .card-details .formItem .formInput:valid{
   border-color: pink;

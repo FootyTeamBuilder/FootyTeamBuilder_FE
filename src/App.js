@@ -75,7 +75,7 @@ function App() {
                     <Route path="*" element={<Footer />} />
                 </Routes>
             </BrowserRouter>
-            <ToastContainer autoClose={1500} />
+            <ToastContainer autoClose={1000} />
         </div>
     );
 }

@@ -29,11 +29,19 @@ const MemberList = ({ teamInfo }) => {
 					memberId={teamInfo.captain._id}
 				/>
 				{teamInfo.members.map((t) => {
+					console.log(t.info);
+					if (t.info == null) {
+						t.info = {};
+					}
 					return (
 						<MemberItem
 							key={t.member._id}
 							captainUserId={teamInfo.captain.userId}
-							avatar={t.info.avatar ? t.info.avatar : "blank-avatar.jpg"}
+							avatar={
+								t.info.avatar
+									? t.info.avatar
+									: "blank-avatar.jpg"
+							}
 							// avatar={"src/assets/blank-avatar.jpg"}
 							name={t.info?.name}
 							role={t.member.role}
